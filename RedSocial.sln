@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RedSocial", "RedSocial\", "{9971124E-F7FF-490A-87B4-D0FDC03DABA8}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		ProjectReferences = "{7719C5CF-5FFF-4993-BF8D-A984C2853BAC}|RedSocialBusiness.dll;{E14E311D-4E26-4410-BDF0-32FA75DE6B66}|RedSocialData.dll;{CEF204E3-2C11-4DB5-8CEB-BCA862FAD3E7}|RedSocialDataSQLServer.dll;{795B76ED-AF6B-4D88-AE15-F686C6447C22}|RedSocialEntity.dll;{9AA2AAB8-B07D-4DF5-9DA9-A588E5E2E267}|RedSocialComun.dll;{F520E209-B004-4AAC-ABF0-57DE5DED2980}|RedSocialWebUtil.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/RedSocial"
 		Debug.AspNetCompiler.PhysicalPath = "RedSocial\"
@@ -20,6 +22,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RedSocial", "RedSocial\", "
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "65348"
+		SlnRelativePath = "RedSocial\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSocialEntity", "RedSocialLib\RedSocialEntity\RedSocialEntity.csproj", "{795B76ED-AF6B-4D88-AE15-F686C6447C22}"
