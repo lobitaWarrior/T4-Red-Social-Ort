@@ -9,38 +9,19 @@
     <title>Red Social ORT</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <asp:ContentPlaceHolder ID="Cabecera" runat="server">
-                <div class="row">
-                    <div class="col-md-4">
-                        <asp:Label runat="server" ID="lblRedSocialORT" Text="Red Social ORT" CssClass="RedSocialORTTitulo"></asp:Label>
-                    </div>
-                    <div class="col-md-4 input-group">
-                        <input type="text" class="form-control" placeholder="Buscar amigos">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </span>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn-primary" id="btnPerfil"><i class="fa fa-paw" aria-hidden="true"></i></button>
-                        <button class="btn-primary" id="btnAmigos"><i class="fa fa-users" aria-hidden="true"></i></button>
-                        <%--<button class="btn-primary"><i class="fa fa-comments" aria-hidden="true"></i></button>--%>
-                        <button class="btn-primary" id="btnNoticias"><i class="fa fa-newspaper-o" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <%--            <asp:Table runat="server" ID="tblCabecera" CssClass="Cabecera">
+   <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="Cabecera" runat="server">
+            <asp:Table runat="server" ID="tblCabecera" CssClass="Cabecera">
                 <asp:TableRow>
                     <asp:TableCell CssClass="RedSocialORTTitulo"><asp:Label runat="server" ID="lblRedSocialORT" Text="Red Social ORT" CssClass="RedSocialORTTitulo"></asp:Label></asp:TableCell>
                 </asp:TableRow>
-            </asp:Table>--%>
-            </asp:ContentPlaceHolder>
-            <script src="Scripts/jquery-3.1.0.min.js"></script>
-            <script src="Scripts/bootstrap.min.js"></script>
-
-            <asp:ContentPlaceHolder ID="Cuerpo" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+            </asp:Table>
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder id="Cuerpo" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
     </form>
 </body>
 </html>
