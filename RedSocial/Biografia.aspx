@@ -15,21 +15,37 @@
     <div class="row">
         <div class="col-md-3">
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RedSocialORT22AGrupo01ConnectionString %>" SelectCommand="SELECT [UsuarioNombre], [UsuarioApellido], [UsuarioEmail], [UsuarioFechaNacimiento], [UsuarioSexo] FROM [Usuario] WHERE ([UsuarioID] = @UsuarioID)">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RedSocialORT22AGrupo01ConnectionString %>" SelectCommand="SELECT [UsuarioNombre], [UsuarioApellido], [UsuarioEmail], [UsuarioSexo], [UsuarioFechaNacimiento] FROM [Usuario] WHERE ([UsuarioID] = @UsuarioID)">
                 <SelectParameters>
-                    <asp:SessionParameter DefaultValue="1" Name="UsuarioID" SessionField="UsuarioAutenticado" Type="Int32" />
+                    <asp:SessionParameter Name="UsuarioID" SessionField="UsuarioAutenticado" Type="Int32" DefaultValue="1" />
                 </SelectParameters>
             </asp:SqlDataSource>
 
-            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource1" Height="50px" Width="125px">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RedSocialORT22AGrupo01ConnectionString %>" SelectCommand="AmigosBuscarPorUserId" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:SessionParameter Name="IDUsuario" SessionField="UsuarioAutenticado" Type="Int32" DefaultValue="1" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
+            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource1" Height="16px" Width="33px">
                 <Fields>
-                    <asp:BoundField DataField="UsuarioNombre" HeaderText="Nombre" SortExpression="UsuarioNombre">
-                    <HeaderStyle BorderStyle="None" Font-Names="Arial" />
+                    <asp:BoundField DataField="UsuarioNombre" HeaderText="UsuarioNombre" SortExpression="UsuarioNombre">
                     </asp:BoundField>
                     <asp:BoundField DataField="UsuarioApellido" HeaderText="UsuarioApellido" SortExpression="UsuarioApellido" />
                     <asp:BoundField DataField="UsuarioEmail" HeaderText="UsuarioEmail" SortExpression="UsuarioEmail" />
-                    <asp:BoundField DataField="UsuarioFechaNacimiento" HeaderText="UsuarioFechaNacimiento" SortExpression="UsuarioFechaNacimiento" />
                     <asp:BoundField DataField="UsuarioSexo" HeaderText="UsuarioSexo" SortExpression="UsuarioSexo" />
+                    <asp:BoundField DataField="UsuarioFechaNacimiento" HeaderText="UsuarioFechaNacimiento" SortExpression="UsuarioFechaNacimiento" />
+                </Fields>
+            </asp:DetailsView>
+
+
+            <asp:DetailsView ID="DetailsView2" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource2" Height="16px" Width="33px">
+                <Fields>
+                    <asp:BoundField DataField="UsuarioNombre" HeaderText="UsuarioNombre" SortExpression="UsuarioNombre">
+                    </asp:BoundField>
+                    <asp:BoundField DataField="UsuarioApellido" HeaderText="UsuarioApellido" SortExpression="UsuarioApellido" />
+                    <asp:BoundField DataField="UsuarioIDAmigo" HeaderText="UsuarioIDAmigo" SortExpression="UsuarioIDAmigo" />
+                    <asp:BoundField DataField="FechaAlta" HeaderText="FechaAlta" SortExpression="FechaAlta" />
                 </Fields>
             </asp:DetailsView>
 
