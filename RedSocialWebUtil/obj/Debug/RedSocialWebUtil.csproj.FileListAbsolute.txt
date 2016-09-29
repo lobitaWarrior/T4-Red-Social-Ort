@@ -34,3 +34,12 @@ C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialWebUtil\bin\Debug\RedSoc
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.csprojResolveAssemblyReference.cache
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.dll
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.pdb
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialWebUtil.dll
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialWebUtil.pdb
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialComun.dll
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialEntity.dll
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialComun.pdb
+Z:\TC4\RedSocialWebUtil\bin\Debug\RedSocialEntity.pdb
+Z:\TC4\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.csprojResolveAssemblyReference.cache
+Z:\TC4\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.dll
+Z:\TC4\RedSocialWebUtil\obj\Debug\RedSocialWebUtil.pdb

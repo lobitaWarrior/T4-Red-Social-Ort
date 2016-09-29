@@ -17,3 +17,7 @@ C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialComun\bin\Debug\RedSocia
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialComun\obj\Debug\RedSocialComun.csprojResolveAssemblyReference.cache
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialComun\obj\Debug\RedSocialComun.dll
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialComun\obj\Debug\RedSocialComun.pdb
+Z:\TC4\RedSocialComun\bin\Debug\RedSocialComun.dll
+Z:\TC4\RedSocialComun\bin\Debug\RedSocialComun.pdb
+Z:\TC4\RedSocialComun\obj\Debug\RedSocialComun.dll
+Z:\TC4\RedSocialComun\obj\Debug\RedSocialComun.pdb

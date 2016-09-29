@@ -11,4 +11,11 @@ public partial class Biografia : System.Web.UI.Page
     {
 
     }
+
+
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+    }
 }

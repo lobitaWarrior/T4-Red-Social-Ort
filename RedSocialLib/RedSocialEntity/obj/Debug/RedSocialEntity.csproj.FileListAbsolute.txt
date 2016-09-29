@@ -31,3 +31,10 @@ C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialEntity\bin\
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.csprojResolveAssemblyReference.cache
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.dll
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.pdb
+Z:\TC4\RedSocialLib\RedSocialEntity\bin\Debug\RedSocialEntity.dll
+Z:\TC4\RedSocialLib\RedSocialEntity\bin\Debug\RedSocialEntity.pdb
+Z:\TC4\RedSocialLib\RedSocialEntity\bin\Debug\RedSocialComun.dll
+Z:\TC4\RedSocialLib\RedSocialEntity\bin\Debug\RedSocialComun.pdb
+Z:\TC4\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.csprojResolveAssemblyReference.cache
+Z:\TC4\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.dll
+Z:\TC4\RedSocialLib\RedSocialEntity\obj\Debug\RedSocialEntity.pdb
