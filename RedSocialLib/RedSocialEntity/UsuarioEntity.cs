@@ -20,6 +20,10 @@ namespace RedSocialEntity
             Foto = null;
             FechaRegistracion = DateTime.Now;
             FechaActualizacion = null;
+            Estudia = "";
+            Trabajo = "";
+            Vive = "";
+            EstadoCivil = "";
         }
 
         public int Id { get; set; }
@@ -32,6 +36,10 @@ namespace RedSocialEntity
         public string Foto { get; set; }
         public DateTime FechaRegistracion { get; set; }
         public Nullable<DateTime> FechaActualizacion { get; set; }
+        public string Estudia { get; set; }
+        public string Trabajo { get; set; }
+        public string Vive { get; set; }
+        public string EstadoCivil { get; set; }
 
         public void ValidarDatos()
         {

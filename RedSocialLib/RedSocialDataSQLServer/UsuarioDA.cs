@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Configuration;
 using System.IO;
 using RedSocialEntity;
@@ -39,6 +36,24 @@ namespace RedSocialDataSQLServer
 
             return usuario;
         }
+
+        private UsuarioEntity GetInfoUsuario(SqlDataReader cursor)
+        {
+            UsuarioEntity usuario = new UsuarioEntity();
+            usuario.Id = cursor.GetInt32(cursor.GetOrdinal("UsuarioID"));
+            usuario.Nombre = cursor.GetString(cursor.GetOrdinal("UsuarioNombre"));
+            usuario.Apellido = cursor.GetString(cursor.GetOrdinal("UsuarioApellido"));
+            usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
+            usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
+            usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
+            usuario.Estudia = cursor.GetString(cursor.GetOrdinal("Estudia"));
+            usuario.Trabajo= cursor.GetString(cursor.GetOrdinal("Trabajo"));
+            usuario.Vive= cursor.GetString(cursor.GetOrdinal("Vive"));
+            usuario.EstadoCivil= cursor.GetString(cursor.GetOrdinal("EstadoCivil"));
+
+            return usuario;
+        }
+
         #endregion Métodos Privados
 
         #region Métodos Públicos
@@ -174,6 +189,37 @@ namespace RedSocialDataSQLServer
                 throw new ExcepcionDA("Se produjo un error al buscar por email y contraseña.", ex);
             }
         }
+
+        public UsuarioEntity TraerInformacionUsuario(int idUser)
+        {
+            UsuarioEntity usuario = null;
+
+            using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+            {
+                using (SqlCommand comando = new SqlCommand("UsuarioInfoBuscarPorId", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    SqlCommandBuilder.DeriveParameters(comando);
+
+                    comando.Parameters["@IDUsuario"].Value = idUser;
+
+                    using (SqlDataReader cursor = comando.ExecuteReader())
+                    {
+                        if (cursor.Read())
+                        {
+                            usuario = GetInfoUsuario(cursor);
+                        }
+
+                        cursor.Close();
+                    }
+                }
+
+                conexion.Close();
+            }
+
+            return usuario;
+        }
+
         #endregion Métodos Públicos
     }
 }

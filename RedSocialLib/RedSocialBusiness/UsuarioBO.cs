@@ -65,5 +65,19 @@ namespace RedSocialBusiness
                 throw new ExcepcionBO("No se pudo actualizar la foto.", ex);
             }
         }
+
+        public UsuarioEntity TraerInformacionUsuario(int idUser)
+        {
+            UsuarioEntity usuario = new UsuarioEntity();
+            try
+            {
+                usuario = daUsuario.TraerInformacionUsuario(idUser);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo traer la información del usuario.", ex);
+            }
+            return usuario;
+        }
     }
 }

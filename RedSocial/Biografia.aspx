@@ -15,35 +15,26 @@
     <div class="row">
         <div class="col-md-3">
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RedSocialORT22AGrupo01ConnectionString %>" SelectCommand="SELECT [UsuarioNombre], [UsuarioApellido], [UsuarioEmail], [UsuarioSexo], [UsuarioFechaNacimiento] FROM [Usuario] WHERE ([UsuarioID] = @UsuarioID)">
-                <SelectParameters>
-                    <asp:SessionParameter Name="UsuarioID" SessionField="UsuarioAutenticado" Type="Int32" DefaultValue="1" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RedSocialORT22AGrupo01ConnectionString %>" SelectCommand="AmigosBuscarPorUserId" SelectCommandType="StoredProcedure">
-                <SelectParameters>
-                    <asp:SessionParameter Name="IDUsuario" SessionField="UsuarioAutenticado" Type="Int32" DefaultValue="1" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-
-            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource1" Height="16px" Width="33px">
+            <asp:DetailsView ID="detailsViewInfoUsuario" runat="server" AutoGenerateRows="False" Height="16px" Width="33px">
                 <Fields>
-                    <asp:BoundField DataField="UsuarioNombre" HeaderText="UsuarioNombre" SortExpression="UsuarioNombre"></asp:BoundField>
-                    <asp:BoundField DataField="UsuarioApellido" HeaderText="UsuarioApellido" SortExpression="UsuarioApellido" />
-                    <asp:BoundField DataField="UsuarioEmail" HeaderText="UsuarioEmail" SortExpression="UsuarioEmail" />
-                    <asp:BoundField DataField="UsuarioSexo" HeaderText="UsuarioSexo" SortExpression="UsuarioSexo" />
-                    <asp:BoundField DataField="UsuarioFechaNacimiento" HeaderText="UsuarioFechaNacimiento" SortExpression="UsuarioFechaNacimiento" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                    <asp:BoundField DataField="Sexo" HeaderText="Sexo" SortExpression="Sexo" />
+                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" />
+                    <asp:BoundField DataField="Estudia" HeaderText="Estudia" SortExpression="Estudia" />
+                    <asp:BoundField DataField="Trabajo" HeaderText="Trabajo" SortExpression="Trabajo" />
+                    <asp:BoundField DataField="Vive" HeaderText="Vive" SortExpression="Vive" />
+                    <asp:BoundField DataField="EstadoCivil" HeaderText="Estado Civil" SortExpression="EstadoCivil" />
                 </Fields>
             </asp:DetailsView>
 
 
-            <asp:DetailsView ID="DetailsView2" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource2" Height="16px" Width="33px">
+            <asp:DetailsView ID="detailsViewInfoAmigos" runat="server" AutoGenerateRows="False" Height="16px" Width="33px">
                 <Fields>
-                    <asp:BoundField DataField="UsuarioNombre" HeaderText="UsuarioNombre" SortExpression="UsuarioNombre"></asp:BoundField>
-                    <asp:BoundField DataField="UsuarioApellido" HeaderText="UsuarioApellido" SortExpression="UsuarioApellido" />
-                    <asp:BoundField DataField="UsuarioIDAmigo" HeaderText="UsuarioIDAmigo" SortExpression="UsuarioIDAmigo" />
-                    <asp:BoundField DataField="FechaAlta" HeaderText="FechaAlta" SortExpression="FechaAlta" />
+                    <asp:BoundField DataField="UsuarioNombre" HeaderText="Nombre" SortExpression="UsuarioNombre"></asp:BoundField>
+                    <asp:BoundField DataField="UsuarioApellido" HeaderText="Apellido" SortExpression="UsuarioApellido" />
+                    <asp:BoundField DataField="UsuarioFoto" HeaderText="Foto" SortExpression="UsuarioIDAmigo" />
                 </Fields>
             </asp:DetailsView>
         </div>
