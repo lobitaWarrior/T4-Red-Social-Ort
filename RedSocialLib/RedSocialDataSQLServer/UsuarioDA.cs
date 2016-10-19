@@ -54,6 +54,21 @@ namespace RedSocialDataSQLServer
             return usuario;
         }
 
+        private AmigosEntity GetInfoAmigo(SqlDataReader cursor)
+        {
+            AmigosEntity usuario = new AmigosEntity();
+            usuario.Id = cursor.GetInt32(cursor.GetOrdinal("UsuarioIDAmigo"));
+            usuario.Nombre = cursor.GetString(cursor.GetOrdinal("UsuarioNombre"));
+            usuario.Apellido = cursor.GetString(cursor.GetOrdinal("UsuarioApellido"));
+            usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
+            usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
+            usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
+            usuario.Trabajo = cursor.GetString(cursor.GetOrdinal("UsuarioTrabajo"));
+            usuario.Vive = cursor.GetString(cursor.GetOrdinal("UsuarioProvincia"));
+            usuario.Foto = cursor.GetString(cursor.GetOrdinal("UsuarioFoto"));
+            return usuario;
+        }
+
         #endregion Métodos Privados
 
         #region Métodos Públicos
@@ -218,6 +233,36 @@ namespace RedSocialDataSQLServer
             }
 
             return usuario;
+        }
+
+        public AmigosEntity TraerInformacionAmigosUsuario(int idUser)
+        {
+            AmigosEntity amigos = null;
+
+            using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+            {
+                using (SqlCommand comando = new SqlCommand("UsuarioInfoBuscarPorId", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    SqlCommandBuilder.DeriveParameters(comando);
+
+                    comando.Parameters["@IDUsuario"].Value = idUser;
+
+                    using (SqlDataReader cursor = comando.ExecuteReader())
+                    {
+                        if (cursor.Read())
+                        {
+                            amigos = GetInfoAmigo(cursor);
+                        }
+
+                        cursor.Close();
+                    }
+                }
+
+                conexion.Close();
+            }
+
+            return amigos;
         }
 
         #endregion Métodos Públicos

@@ -79,5 +79,22 @@ namespace RedSocialBusiness
             }
             return usuario;
         }
+
+
+
+        public AmigosEntity TraerInformacionAmigosUsuario(int idUser)
+        {
+            AmigosEntity amigos = new AmigosEntity();
+            try
+            {
+                amigos = daUsuario.TraerInformacionAmigosUsuario(idUser);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo traer los amigos del usuario.", ex);
+            }
+            return amigos;
+        }
+
     }
 }

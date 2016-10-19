@@ -48,14 +48,13 @@ public partial class Biografia : System.Web.UI.Page
 
         try
         {
-            //TO-DO: AMIGOS ENTITY, LLAMAR AL SP EN CAPA DATOS
 
-            //UsuarioEntity usuario = new UsuarioEntity();
-            //usuario = boUsuario.TraerInformacionUsuario(idUser);
-            //List<> dsUsuario = new List<UsuarioEntity>();
-            //dsUsuario.Add(usuario);
-            //detailsViewInfoAmigos.DataSource = dsUsuario;
-            //detailsViewInfoAmigos.DataBind();
+            AmigosEntity amigos = new AmigosEntity();
+            amigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
+            List<AmigosEntity> dsUsuario = new List<AmigosEntity>();
+            dsUsuario.Add(amigos);
+            detailsViewInfoAmigos.DataSource = dsUsuario;
+            detailsViewInfoAmigos.DataBind();
         }
         catch (Exception ex)
         {

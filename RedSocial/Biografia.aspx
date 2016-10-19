@@ -9,7 +9,7 @@
             <textarea class="form-control" placeholder="Escribe en la biograf&iacute;a"></textarea>
         </div>
         <div class="col-md-2">
-            <asp:Button ID="btnAceptarTextoBiografia" runat="server" CssClass="btn-primary" />
+            <asp:Button ID="btnAceptarTextoBiografia" runat="server" CssClass="btn btn-primary" Text="Escribir" />
         </div>
     </div>
     <div class="row">
@@ -30,13 +30,15 @@
             </asp:DetailsView>
 
 
-            <asp:DetailsView ID="detailsViewInfoAmigos" runat="server" AutoGenerateRows="False" Height="16px" Width="33px">
-                <Fields>
-                    <asp:BoundField DataField="UsuarioNombre" HeaderText="Nombre" SortExpression="UsuarioNombre"></asp:BoundField>
-                    <asp:BoundField DataField="UsuarioApellido" HeaderText="Apellido" SortExpression="UsuarioApellido" />
-                    <asp:BoundField DataField="UsuarioFoto" HeaderText="Foto" SortExpression="UsuarioIDAmigo" />
-                </Fields>
-            </asp:DetailsView>
+            <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:ImageField DataImageUrlField="UsuarioFoto">
+                    </asp:ImageField>
+                    <asp:BoundField DataField="UsuarioNombre" HeaderText="Nombre" ReadOnly="True" SortExpression="UsuarioNombre" />
+                    <asp:BoundField DataField="UsuarioApellido" HeaderText="Apellido" ReadOnly="True" SortExpression="UsuarioApellido" />
+                </Columns>
+
+            </asp:GridView>
         </div>
         <%--        <div class="col-md-7">
             <asp:ListView runat="server" ID="lstMuro" DataSourceID="sqlDataSourceMuro">
