@@ -7,10 +7,9 @@
         </div>
         <div class="col-md-7">
             <textarea class="form-control" placeholder="Escribe en la biograf&iacute;a"></textarea>
+                        <asp:Button ID="btnAceptarTextoBiografia" runat="server" CssClass="btn btn-primary" Text="Escribir" />
         </div>
-        <div class="col-md-2">
-            <asp:Button ID="btnAceptarTextoBiografia" runat="server" CssClass="btn btn-primary" Text="Escribir" />
-        </div>
+
     </div>
     <div class="row">
         <div class="col-md-3">
@@ -40,39 +39,29 @@
 
             </asp:GridView>
         </div>
-        <%--        <div class="col-md-7">
-            <asp:ListView runat="server" ID="lstMuro" DataSourceID="sqlDataSourceMuro">
-                <LayoutTemplate>
-                    <table runat="server" id="tableMuro">
-                        <tr runat="server" id="itemPlaceholder"></tr>
-                    </table>
-                </LayoutTemplate>
+
+        <div class="col-md-7">
+
+            <asp:Repeater ID="RptMuro" runat="server">
                 <ItemTemplate>
-                    <tr runat="server">
-                        <td runat="server">
-                            <asp:Label runat="server" Text='<%#Eval("Usuario") %>' />
-                            <asp:Label runat="server" Text='<%#Eval("Texto") %>' />
-                        </td>
-                    </tr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>
+
+                        </div>
+                        <div class="col-md-9">
+                            <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Remitente") %>'></asp:Label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:Label runat="server" ID="lblMensaje" Text='<%# Eval("Mensaje") %>'></asp:Label>
+                        </div>
+                    </div>
                 </ItemTemplate>
-            </asp:ListView>
-        </div>--%>
-        <%--        <div class="col-md-2">
-            <asp:ListView runat="server" ID="LstAmigos" DataSourceID="sqlDataSourceMuro">
-                <LayoutTemplate>
-                    <table runat="server" id="tableAmigos">
-                        <tr runat="server" id="itemPlaceholder"></tr>
-                    </table>
-                </LayoutTemplate>
-                <ItemTemplate>
-                    <tr runat="server">
-                        <td runat="server">
-                            <asp:Label runat="server" Text='<%#Eval("Nombre") %>' />
-                        </td>
-                    </tr>
-                </ItemTemplate>
-            </asp:ListView>
-        </div>--%>
+            </asp:Repeater>
+
+        </div>
     </div>
 
 </asp:Content>

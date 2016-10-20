@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AmigosBO.cs" />
     <Compile Include="AutenticacionExcepcionBO.cs" />
+    <Compile Include="MuroBO.cs" />
     <Compile Include="VerificacionEmailExcepcionBO.cs" />
     <Compile Include="EmailExisteExcepcionBO.cs" />
     <Compile Include="ExcepcionBO.cs" />

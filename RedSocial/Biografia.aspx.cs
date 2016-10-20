@@ -13,6 +13,8 @@ using System.Data;
 public partial class Biografia : System.Web.UI.Page
 {
     private UsuarioBO boUsuario = new UsuarioBO();
+    private MuroBO boMuro = new MuroBO();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -62,4 +64,14 @@ public partial class Biografia : System.Web.UI.Page
         }
     }
 
+    public void LlenarMuroUsuario(int idUser)
+    {
+        MuroEntity muro = new MuroEntity();
+        muro = boMuro.TraerInformacionUsuario(idUser);
+        List<MuroEntity> dsMuro = new List<MuroEntity>();
+        dsMuro.Add(muro);
+        RptMuro.DataSource=dsMuro;
+        RptMuro.DataBind();
+        
+    }
 }
