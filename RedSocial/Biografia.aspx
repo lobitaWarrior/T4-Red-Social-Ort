@@ -6,8 +6,12 @@
             <asp:Image runat="server" CssClass="img-responsive img-rounded" />
         </div>
         <div class="col-md-7">
-            <textarea class="form-control" placeholder="Escribe en la biograf&iacute;a"></textarea>
-                        <asp:Button ID="btnAceptarTextoBiografia" runat="server" CssClass="btn btn-primary" Text="Escribir" />
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Escribe en la biograf&iacute;a"></input>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="button">Go!</button>
+                </span>
+            </div>
         </div>
 
     </div>
