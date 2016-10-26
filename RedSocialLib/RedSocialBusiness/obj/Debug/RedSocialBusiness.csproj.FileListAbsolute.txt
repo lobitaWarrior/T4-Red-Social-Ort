@@ -55,3 +55,16 @@ C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bi
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.csprojResolveAssemblyReference.cache
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.dll
 C:\Users\lobita\Source\Repos\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialBusiness.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialBusiness.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialComun.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialData.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialDataSQLServer.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialEntity.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialComun.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialDataSQLServer.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialData.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\bin\Debug\RedSocialEntity.pdb
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.csprojResolveAssemblyReference.cache
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.dll
+Z:\T4\T4-Red-Social-Ort\RedSocialLib\RedSocialBusiness\obj\Debug\RedSocialBusiness.pdb

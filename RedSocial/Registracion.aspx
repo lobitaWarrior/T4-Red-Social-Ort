@@ -2,7 +2,7 @@
 
 <asp:Content ID="cphContenido" ContentPlaceHolderID="Cuerpo" Runat="Server">
     <asp:Panel runat="server" ID="panInicio" CssClass="FondoRegistracion">
-        <asp:Image runat="server" ID="imgRedSocialORT" ImageUrl="~/Imagenes/RedSocialORT.png" CssClass="RedSocialORT" />
+        <asp:Image runat="server" ID="imgRedSocialORT" ImageUrl="~/Imagenes/RedSocialORT.png" CssClass="img-responsive RedSocialORT" />
 
         <asp:Panel runat="server" ID="panRegistraciom" CssClass="Registracion">
             <asp:Table runat="server" ID="tblRegistracion" CellSpacing="8">
@@ -19,10 +19,10 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtNombre" runat="server" Columns="20" MaxLength="30" placeholder="Nombre" CssClass="CajaTextoRegistracion"></asp:TextBox>            
+                        <asp:TextBox ID="txtNombre" runat="server" Columns="20" MaxLength="30" placeholder="Nombre" CssClass="form-control CajaTextoRegistracion"></asp:TextBox>            
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtApellido" runat="server" Columns="20" MaxLength="30" placeholder="Apellido" CssClass="CajaTextoRegistracionApellido"></asp:TextBox>            
+                        <asp:TextBox ID="txtApellido" runat="server" Columns="20" MaxLength="30" placeholder="Apellido" CssClass="form-control CajaTextoRegistracionApellido"></asp:TextBox>            
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -32,7 +32,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="2">
-                        <asp:TextBox ID="txtEmail" runat="server" Columns="48" MaxLength="100" placeholder="Tu correo electrónico" CssClass="CajaTextoRegistracion"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" Columns="48" MaxLength="100" placeholder="Tu correo electrónico" CssClass=" form-control CajaTextoRegistracion"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -42,7 +42,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="2">
-                        <asp:TextBox ID="txtEmailVerificacion" runat="server" Columns="48" MaxLength="100" placeholder="Vuelve a escribir tu correo electrónico" CssClass="CajaTextoRegistracion"></asp:TextBox>
+                        <asp:TextBox ID="txtEmailVerificacion" runat="server" Columns="48" MaxLength="100" placeholder="Vuelve a escribir tu correo electrónico" CssClass="form-control CajaTextoRegistracion"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -52,7 +52,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="2">
-                        <asp:TextBox ID="txtPassword" runat="server" Columns="48" MaxLength="10" TextMode="Password" placeholder="Contraseña" CssClass="CajaTextoRegistracion"></asp:TextBox>                
+                        <asp:TextBox ID="txtPassword" runat="server" Columns="48" MaxLength="10" TextMode="Password" placeholder="Contraseña" CssClass="form-control CajaTextoRegistracion"></asp:TextBox>                
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -60,10 +60,10 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="2">
-                        <asp:DropDownList ID="ddlDia" runat="server">
+                        <asp:DropDownList ID="ddlDia" runat="server" CssClass="btn btn-default dropdown-toggle">
                             <asp:ListItem Value="0" Text="Día"></asp:ListItem>
                         </asp:DropDownList>
-                        <asp:DropDownList ID="ddlMes" runat="server">
+                        <asp:DropDownList ID="ddlMes" runat="server" CssClass="btn btn-default dropdown-toggle">
                             <asp:ListItem Value="0" Text="Mes"></asp:ListItem>
                             <asp:ListItem Value="1" Text="Ene"></asp:ListItem>
                             <asp:ListItem Value="2" Text="Feb"></asp:ListItem>
@@ -78,7 +78,7 @@
                             <asp:ListItem Value="11" Text="Nov"></asp:ListItem>
                             <asp:ListItem Value="12" Text="Dic"></asp:ListItem>
                         </asp:DropDownList>
-                        <asp:DropDownList ID="ddlAnio" runat="server">
+                        <asp:DropDownList ID="ddlAnio" runat="server" CssClass="btn btn-default dropdown-toggle">
                             <asp:ListItem Value="0" Text="Año"></asp:ListItem>
                         </asp:DropDownList>
                     </asp:TableCell>
@@ -91,7 +91,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Button ID="btnRegistrate" runat="server" Text="Registrate" OnClick="btnRegistrate_Click" CssClass="BotonRegistracion" />
+                        <asp:Button ID="btnRegistrate" runat="server" Text="Registrate" OnClick="btnRegistrate_Click" CssClass="btn btn-primary" />
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

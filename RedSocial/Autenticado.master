@@ -5,10 +5,11 @@
 <html lang="es">
 <head id="Head1" runat="server">
     <meta charset="ISO-8859-1" />
+    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css" />
     <title>Red Social ORT</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+   <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder id="Cabecera" runat="server">
             <asp:Table runat="server" ID="tblCabecera" CssClass="Cabecera">

@@ -5,14 +5,17 @@
 <html lang="es">
 <head runat="server">
     <meta charset="ISO-8859-1" />
+    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css" />
     <title>Red Social ORT</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ContentPlaceHolder id="Cabecera" runat="server">
+        <asp:ContentPlaceHolder ID="Cabecera" runat="server">
             <asp:Table runat="server" ID="tblCabecera" CssClass="Cabecera">
                 <asp:TableRow>
-                    <asp:TableCell CssClass="RedSocialORTTitulo"><asp:Label runat="server" ID="lblRedSocialORT" Text="Red Social ORT" CssClass="RedSocialORTTitulo"></asp:Label></asp:TableCell>
+                    <asp:TableCell CssClass="RedSocialORTTitulo">
+                        <asp:Label runat="server" ID="lblRedSocialORT" Text="Red Social ORT" CssClass="RedSocialORTTitulo"></asp:Label>
+                    </asp:TableCell>
                     <asp:TableCell>
                         <asp:Table runat="server" ID="tblLogin">
                             <asp:TableRow>
@@ -28,13 +31,19 @@
                             </asp:TableRow>
                             <asp:TableRow>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="txtEmail" runat="server" Columns="20" MaxLength="100" CssClass="CajaTextoCabecera" />
+                                    <div>
+                                        <asp:TextBox ID="txtEmail" runat="server" Columns="20" MaxLength="100" CssClass="form-control" />
+                                    </div>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="txtPassword" runat="server" Columns="20" TextMode="Password" MaxLength="10" CssClass="CajaTextoCabecera" />
+                                    <div style="padding-left: 5px;">
+                                        <asp:TextBox ID="txtPassword" runat="server" Columns="20" TextMode="Password" MaxLength="10" CssClass="form-control " />
+                                    </div>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:Button ID="btnEntrar" runat="server" Text="Entrar" OnClick="btnEntrar_Click" CssClass="BotonCabecera" />
+                                    <div style="padding-left: 5px;">
+                                        <asp:Button ID="btnEntrar" runat="server" Text="Entrar" OnClick="btnEntrar_Click" CssClass="btn btn-primary" />
+                                    </div>
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
@@ -42,8 +51,9 @@
                 </asp:TableRow>
             </asp:Table>
         </asp:ContentPlaceHolder>
-        <asp:ContentPlaceHolder id="Cuerpo" runat="server">
-        
+        <script src="Scripts/jquery-3.1.0.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <asp:ContentPlaceHolder ID="Cuerpo" runat="server">
         </asp:ContentPlaceHolder>
     </form>
 </body>
