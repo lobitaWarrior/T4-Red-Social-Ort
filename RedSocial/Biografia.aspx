@@ -35,10 +35,10 @@
 
             <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False">
                 <Columns>
-                    <asp:ImageField DataImageUrlField="UsuarioFoto">
-                    </asp:ImageField>
-                    <asp:BoundField DataField="UsuarioNombre" HeaderText="Nombre" ReadOnly="True" SortExpression="UsuarioNombre" />
-                    <asp:BoundField DataField="UsuarioApellido" HeaderText="Apellido" ReadOnly="True" SortExpression="UsuarioApellido" />
+<%--                    <asp:ImageField DataImageUrlField="UsuarioFoto">
+                    </asp:ImageField>--%>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" ReadOnly="True" SortExpression="Apellido" />
                 </Columns>
 
             </asp:GridView>
@@ -50,7 +50,7 @@
                 <ItemTemplate>
                     <div class="row">
                         <div class="col-md-3">
-                            <asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>
+<%--                            <asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>--%>
 
                         </div>
                         <div class="col-md-9">

@@ -82,9 +82,9 @@ namespace RedSocialBusiness
 
 
 
-        public AmigosEntity TraerInformacionAmigosUsuario(int idUser)
+        public List<AmigosEntity> TraerInformacionAmigosUsuario(int idUser)
         {
-            AmigosEntity amigos = new AmigosEntity();
+            List<AmigosEntity>amigos = new List<AmigosEntity>();
             try
             {
                 amigos = daUsuario.TraerInformacionAmigosUsuario(idUser);

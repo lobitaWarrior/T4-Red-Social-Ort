@@ -5,6 +5,8 @@ using System.Configuration;
 using System.IO;
 using RedSocialEntity;
 using RedSocialData;
+using System.Collections.Generic;
+
 namespace RedSocialDataSQLServer
 {
     public class MuroDA
@@ -22,7 +24,7 @@ namespace RedSocialDataSQLServer
             muro.fechaPublicacion = cursor.GetDateTime(cursor.GetOrdinal("Fecha"));
             muro.Remitente = cursor.GetString(cursor.GetOrdinal("Remitente"));
             muro.Mensaje = cursor.GetString(cursor.GetOrdinal("Mensaje"));
-            muro.RemitenteFoto = cursor.GetString(cursor.GetOrdinal("RemitenteFoto"));
+            //muro.RemitenteFoto = cursor.GetString(cursor.GetOrdinal("RemitenteFoto"));
 
             return muro;
         }
@@ -31,13 +33,13 @@ namespace RedSocialDataSQLServer
 
         #region Metodos Publicos
 
-        public MuroEntity TraerDataMuro(int idUser)
+        public List<MuroEntity> TraerDataMuro(int idUser)
         {
-            MuroEntity muro = null;
+            List<MuroEntity> muro = new List<MuroEntity>();
 
             using (SqlConnection conexion = ConexionDA.ObtenerConexion())
             {
-                using (SqlCommand comando = new SqlCommand("[MuroInfoBuscarPorUserId]", conexion))
+                using (SqlCommand comando = new SqlCommand("MuroInfoBuscarPorUserId", conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     SqlCommandBuilder.DeriveParameters(comando);
@@ -46,9 +48,9 @@ namespace RedSocialDataSQLServer
 
                     using (SqlDataReader cursor = comando.ExecuteReader())
                     {
-                        if (cursor.Read())
+                        while (cursor.Read())
                         {
-                            muro = GetDataMuro(cursor);
+                            muro.Add(GetDataMuro(cursor));
                         }
 
                         cursor.Close();

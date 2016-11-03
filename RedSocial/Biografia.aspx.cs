@@ -17,6 +17,7 @@ public partial class Biografia : System.Web.UI.Page
             //cuando entra mi pagina personal y la de otro -> si en la url hay un prametro se lo mando sino session
             LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
             LlenarListViewInfoAmigos(SessionHelper.UsuarioAutenticado.Id);
+            LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);
         }
     }
 
@@ -46,11 +47,9 @@ public partial class Biografia : System.Web.UI.Page
         try
         {
 
-            AmigosEntity amigos = new AmigosEntity();
-            amigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
-            List<AmigosEntity> dsUsuario = new List<AmigosEntity>();
-            dsUsuario.Add(amigos);
-            detailsViewInfoAmigos.DataSource = dsUsuario;
+            List<AmigosEntity> dsUsuarioAmigos = new List<AmigosEntity>();
+            dsUsuarioAmigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
+            detailsViewInfoAmigos.DataSource = dsUsuarioAmigos;
             detailsViewInfoAmigos.DataBind();
         }
         catch (Exception ex)
@@ -61,10 +60,8 @@ public partial class Biografia : System.Web.UI.Page
 
     public void LlenarMuroUsuario(int idUser)
     {
-        MuroEntity muro = new MuroEntity();
-        muro = boMuro.TraerInformacionUsuario(idUser);
         List<MuroEntity> dsMuro = new List<MuroEntity>();
-        dsMuro.Add(muro);
+        dsMuro = boMuro.TraerMuroUsuario(idUser);
         RptMuro.DataSource=dsMuro;
         RptMuro.DataBind();
         

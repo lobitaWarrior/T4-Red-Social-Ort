@@ -5,6 +5,7 @@ using System.Configuration;
 using System.IO;
 using RedSocialEntity;
 using RedSocialData;
+using System.Collections.Generic;
 
 namespace RedSocialDataSQLServer
 {
@@ -13,6 +14,8 @@ namespace RedSocialDataSQLServer
         public UsuarioDA()
         {
         }
+
+        Helpers helpers = new Helpers();
 
         #region Métodos Privados
         private UsuarioEntity CrearUsuario(SqlDataReader cursor)
@@ -46,9 +49,9 @@ namespace RedSocialDataSQLServer
             usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
             usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
             usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
-            usuario.Estudia = cursor.GetString(cursor.GetOrdinal("Estudia"));
-            usuario.Trabajo= cursor.GetString(cursor.GetOrdinal("Trabajo"));
-            usuario.Vive= cursor.GetString(cursor.GetOrdinal("Vive"));
+            usuario.Estudia = helpers.SafeGetString(cursor,cursor.GetOrdinal("Estudia"));
+            usuario.Trabajo= helpers.SafeGetString(cursor,cursor.GetOrdinal("Trabajo"));
+            usuario.Vive= helpers.SafeGetString(cursor,cursor.GetOrdinal("Vive"));
             usuario.EstadoCivil= cursor.GetString(cursor.GetOrdinal("EstadoCivil"));
 
             return usuario;
@@ -63,9 +66,9 @@ namespace RedSocialDataSQLServer
             usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
             usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
             usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
-            usuario.Trabajo = cursor.GetString(cursor.GetOrdinal("UsuarioTrabajo"));
-            usuario.Vive = cursor.GetString(cursor.GetOrdinal("UsuarioProvincia"));
-            usuario.Foto = cursor.GetString(cursor.GetOrdinal("UsuarioFoto"));
+            usuario.Trabajo = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioTrabajo"));
+            usuario.Vive = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioProvincia"));
+            usuario.Foto = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioFoto"));
             return usuario;
         }
 
@@ -235,13 +238,13 @@ namespace RedSocialDataSQLServer
             return usuario;
         }
 
-        public AmigosEntity TraerInformacionAmigosUsuario(int idUser)
+        public List<AmigosEntity> TraerInformacionAmigosUsuario(int idUser)
         {
-            AmigosEntity amigos = null;
+            List<AmigosEntity> amigos = new List<AmigosEntity>();
 
             using (SqlConnection conexion = ConexionDA.ObtenerConexion())
             {
-                using (SqlCommand comando = new SqlCommand("UsuarioInfoBuscarPorId", conexion))
+                using (SqlCommand comando = new SqlCommand("AmigosBuscarPorUserId", conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     SqlCommandBuilder.DeriveParameters(comando);
@@ -250,9 +253,9 @@ namespace RedSocialDataSQLServer
 
                     using (SqlDataReader cursor = comando.ExecuteReader())
                     {
-                        if (cursor.Read())
+                        while (cursor.Read())
                         {
-                            amigos = GetInfoAmigo(cursor);
+                            amigos.Add(GetInfoAmigo(cursor));
                         }
 
                         cursor.Close();

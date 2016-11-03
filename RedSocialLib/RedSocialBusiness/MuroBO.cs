@@ -18,9 +18,9 @@ namespace RedSocialBusiness
         }
 
 
-        public MuroEntity TraerInformacionUsuario(int idUser)
+        public List<MuroEntity> TraerMuroUsuario(int idUser)
         {
-            MuroEntity muro = new MuroEntity();
+            List<MuroEntity> muro = new List<MuroEntity>();
             try
             {
                 muro = daMuro.TraerDataMuro(idUser);
