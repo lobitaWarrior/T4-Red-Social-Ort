@@ -13,11 +13,13 @@ public partial class Biografia : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
-        {
+        {            
             //cuando entra mi pagina personal y la de otro -> si en la url hay un prametro se lo mando sino session
-            LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
-            LlenarListViewInfoAmigos(SessionHelper.UsuarioAutenticado.Id);
-            LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);
+            int UsuarioIdNavegado=Convert.ToInt32(Request.QueryString["UserID"]);
+
+            LlenarListViewInfoUsuario(UsuarioIdNavegado==0?SessionHelper.UsuarioAutenticado.Id:UsuarioIdNavegado);
+            LlenarListViewInfoAmigos(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
+            LlenarMuroUsuario(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
         }
         else
         {
