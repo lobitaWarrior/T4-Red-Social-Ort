@@ -19,8 +19,27 @@ public partial class Biografia : System.Web.UI.Page
             LlenarListViewInfoAmigos(SessionHelper.UsuarioAutenticado.Id);
             LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);
         }
+        else
+        {
+            string mensaje = Request.Form["MensajeMuro"];
+            InsertarMensajeMuro(mensaje);
+            LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
+        }
     }
 
+
+    protected void InsertarMensajeMuro(string mensaje)
+    {
+        MuroEntity muro = new MuroEntity();
+
+        muro.RemitenteId = SessionHelper.UsuarioAutenticado.Id;//quien lo hace (el usuario logeado)
+        muro.DestinatarioId = SessionHelper.UsuarioAutenticado.Id; // a quien se lo hace (sacar id pagina)
+        muro.Mensaje = mensaje;
+
+        boMuro.InsertarComentario(muro);
+    }
+
+    #region /////   LLENAR DATOS    /////
     public void LlenarListViewInfoUsuario(int idUser)
     {
         UsuarioEntity user = new UsuarioEntity();
@@ -62,8 +81,10 @@ public partial class Biografia : System.Web.UI.Page
     {
         List<MuroEntity> dsMuro = new List<MuroEntity>();
         dsMuro = boMuro.TraerMuroUsuario(idUser);
-        RptMuro.DataSource=dsMuro;
+        RptMuro.DataSource = dsMuro;
         RptMuro.DataBind();
-        
+
     }
+    #endregion
+
 }

@@ -7,9 +7,9 @@
         </div>
         <div class="col-md-7">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Escribe en la biograf&iacute;a"></input>
+                <input type="text" class="form-control" id="MensajeMuro" name="MensajeMuro" placeholder="Escribe en la biograf&iacute;a"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="button">Go!</button>
+                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="submit">Go!</button>
                 </span>
             </div>
         </div>

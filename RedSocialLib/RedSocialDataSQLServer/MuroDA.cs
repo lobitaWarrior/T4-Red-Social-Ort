@@ -33,6 +33,34 @@ namespace RedSocialDataSQLServer
 
         #region Metodos Publicos
 
+        public void InsertarComentario(MuroEntity muro)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+                    using (SqlCommand comando = new SqlCommand("CrearMensajeMuro", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        SqlCommandBuilder.DeriveParameters(comando);
+
+                        comando.Parameters["@IDUsuario"].Value = muro.DestinatarioId;
+                        comando.Parameters["@IDUsuarioRemitente"].Value = muro.RemitenteId;
+                        comando.Parameters["@Message"].Value = muro.Mensaje;
+
+                        comando.ExecuteNonQuery();
+
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionDA("Se produjo un error al insertar el comentario en el muro", ex);
+            }
+        }
+
         public List<MuroEntity> TraerDataMuro(int idUser)
         {
             List<MuroEntity> muro = new List<MuroEntity>();

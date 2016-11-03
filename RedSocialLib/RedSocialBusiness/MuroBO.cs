@@ -17,6 +17,18 @@ namespace RedSocialBusiness
             daMuro = new MuroDA();
         }
 
+        public void InsertarComentario(MuroEntity muro)
+        {
+            try
+            {
+                daMuro.InsertarComentario(muro);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo publicar el comentario en el muro.", ex);
+            }
+        }
+
 
         public List<MuroEntity> TraerMuroUsuario(int idUser)
         {
