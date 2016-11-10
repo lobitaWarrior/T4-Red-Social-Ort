@@ -4,6 +4,7 @@ using System.Web.UI;
 using RedSocialBusiness;
 using RedSocialEntity;
 using RedSocialWebUtil;
+using System.Web.UI.WebControls;
 
 public partial class Biografia : System.Web.UI.Page
 {
@@ -23,9 +24,10 @@ public partial class Biografia : System.Web.UI.Page
         }
         else
         {
-            string mensaje = Request.Form["MensajeMuro"];
-            InsertarMensajeMuro(mensaje);
-            LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
+            //HACER STO EN BOTON MURO
+            //string mensaje = Request.Form["MensajeMuro"];
+            //InsertarMensajeMuro(mensaje);
+            //LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
         }
     }
 
@@ -87,6 +89,54 @@ public partial class Biografia : System.Web.UI.Page
         RptMuro.DataBind();
 
     }
+
+    public void devolverDatosUsuario(ref UsuarioEntity usuario) {
+
+        //TENER CUENTA VALIDACIONES
+        //TODO: VER LO DEL COMBO
+        usuario.Nombre = ((TextBox)detailsViewInfoUsuario.Rows[0].Cells[1].Controls[0]).Text;
+        usuario.Apellido = ((TextBox)detailsViewInfoUsuario.Rows[1].Cells[1].Controls[0]).Text;
+        usuario.Email= ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
+        usuario.Sexo = 'F';//Convert.ToChar(((DropDownList)detailsViewInfoUsuario.Rows[3].Cells[1].Controls[0]).SelectedValue);
+        usuario.FechaNacimiento = Convert.ToDateTime(((TextBox)detailsViewInfoUsuario.Rows[4].Cells[1].Controls[0]).Text);
+        usuario.Estudia = ((TextBox)detailsViewInfoUsuario.Rows[5].Cells[1].Controls[0]).Text;
+        usuario.Trabajo= ((TextBox)detailsViewInfoUsuario.Rows[6].Cells[1].Controls[0]).Text;
+        usuario.Vive= ((TextBox)detailsViewInfoUsuario.Rows[7].Cells[1].Controls[0]).Text;
+        usuario.EstadoCivil = ((TextBox)detailsViewInfoUsuario.Rows[8].Cells[1].Controls[0]).Text;
+        usuario.Id = SessionHelper.UsuarioAutenticado.Id;
+
+    }
     #endregion
+
+
+    protected void btnEditarInformacion_Click(object sender, EventArgs e)
+    {
+        detailsViewInfoUsuario.ChangeMode(DetailsViewMode.Edit);
+        LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
+        LinkButton btnGuardar = (LinkButton)detailsViewInfoUsuario.FindControl("btnGuardarInformacion");
+        LinkButton btnCancelar = (LinkButton)detailsViewInfoUsuario.FindControl("btnCancelarGuardado");
+        LinkButton btnEditar = (LinkButton)detailsViewInfoUsuario.FindControl("btnEditarInformacion");
+        btnGuardar.Visible = true;
+        btnCancelar.Visible = true;
+        btnEditar.Visible = false;
+
+    }
+
+    protected void btnGuardarInformacion_Click(object sender, EventArgs e)
+    {
+        UsuarioEntity usuario = new UsuarioEntity();
+        devolverDatosUsuario(ref usuario);
+        boUsuario.ActualizarInformacionUsuario(usuario);
+        detailsViewInfoUsuario.ChangeMode(DetailsViewMode.ReadOnly);
+        detailsViewInfoUsuario.DefaultMode = DetailsViewMode.ReadOnly;
+        LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
+    }
+
+    protected void btnCancelarGuardado_Click(object sender, EventArgs e)
+    {
+        detailsViewInfoUsuario.ChangeMode(DetailsViewMode.ReadOnly);
+        detailsViewInfoUsuario.DefaultMode = DetailsViewMode.ReadOnly;
+        LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
+    }
 
 }

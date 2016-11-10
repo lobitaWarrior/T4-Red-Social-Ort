@@ -268,6 +268,41 @@ namespace RedSocialDataSQLServer
             return amigos;
         }
 
+        public void ActualizarInformacionUsuario(UsuarioEntity usuario)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+                    using (SqlCommand comando = new SqlCommand("ModificarInfoUsuario", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        SqlCommandBuilder.DeriveParameters(comando);
+
+                        comando.Parameters["@IDUsuario"].Value = usuario.Id;
+                        comando.Parameters["@Apellido"].Value = usuario.Apellido.Trim();
+                        comando.Parameters["@Email"].Value = usuario.Email.Trim();
+                        comando.Parameters["@FechaNacimiento"].Value = usuario.FechaNacimiento;
+                        comando.Parameters["@Nombre"].Value = usuario.Nombre.Trim();
+                        comando.Parameters["@Sexo"].Value = usuario.Sexo;
+                        comando.Parameters["@Trabaja"].Value = usuario.Trabajo.Trim();
+                        comando.Parameters["@Estudia"].Value = usuario.Estudia.Trim();
+                        comando.Parameters["@Vive"].Value = usuario.Vive.Trim();
+                        comando.Parameters["@EstadoCivil"].Value = usuario.EstadoCivil.Trim();
+                        comando.Parameters["@IDUsuarioEstadoCivil"].Value = 1;//TODO: CAMBIAR ACA
+                        comando.ExecuteNonQuery();
+                    }
+
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionDA("Se produjo un error al insertar el usuario.", ex);
+            }
+
+        }
+
         #endregion Métodos Públicos
     }
 }

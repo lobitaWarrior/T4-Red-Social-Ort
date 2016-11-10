@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autenticado.master" AutoEventWireup="true" CodeFile="Biografia.aspx.cs" Inherits="Biografia" %>
 
+
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
     <div class="row">
         <div class="col-md-3">
@@ -23,13 +24,31 @@
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="Sexo" HeaderText="Sexo" SortExpression="Sexo" />
+                    <asp:TemplateField HeaderText="Sexo" SortExpression="Sexo">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DropDownList1" runat="server" Height="23px">
+                                <asp:ListItem Value="M">Masculino</asp:ListItem>
+                                <asp:ListItem Value="F">Femenino</asp:ListItem>
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Sexo") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Sexo") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" />
                     <asp:BoundField DataField="Estudia" HeaderText="Estudia" SortExpression="Estudia" />
                     <asp:BoundField DataField="Trabajo" HeaderText="Trabajo" SortExpression="Trabajo" />
                     <asp:BoundField DataField="Vive" HeaderText="Vive" SortExpression="Vive" />
                     <asp:BoundField DataField="EstadoCivil" HeaderText="Estado Civil" SortExpression="EstadoCivil" />
                 </Fields>
+                <HeaderTemplate>
+                    <asp:LinkButton runat="server" ID="btnEditarInformacion"  CssClass="pull-right" OnClick="btnEditarInformacion_Click" ><i class="glyphicon glyphicon-pencil"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnGuardarInformacion"  CssClass="pull-right " OnClick="btnGuardarInformacion_Click" Visible="false"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnCancelarGuardado" CssClass="pull-right  " OnClick="btnCancelarGuardado_Click" Visible="false"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
+                </HeaderTemplate>
             </asp:DetailsView>
 
 

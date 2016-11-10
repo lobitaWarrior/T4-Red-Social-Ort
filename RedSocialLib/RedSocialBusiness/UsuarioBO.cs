@@ -80,8 +80,6 @@ namespace RedSocialBusiness
             return usuario;
         }
 
-
-
         public List<AmigosEntity> TraerInformacionAmigosUsuario(int idUser)
         {
             List<AmigosEntity>amigos = new List<AmigosEntity>();
@@ -96,5 +94,16 @@ namespace RedSocialBusiness
             return amigos;
         }
 
+        public void ActualizarInformacionUsuario(UsuarioEntity usuario)
+        {
+            try
+            {
+                daUsuario.ActualizarInformacionUsuario(usuario);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo actualizar la foto.", ex);
+            }
+        }
     }
 }
