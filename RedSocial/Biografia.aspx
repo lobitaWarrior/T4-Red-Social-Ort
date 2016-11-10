@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Autenticado.master" AutoEventWireup="true" CodeFile="Biografia.aspx.cs" Inherits="Biografia" %>
 
-
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
     <div class="row">
         <div class="col-md-3">
@@ -10,7 +9,8 @@
             <div class="input-group">
                 <input type="text" class="form-control" id="MensajeMuro" name="MensajeMuro" placeholder="Escribe en la biograf&iacute;a"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="submit">Go!</button>
+<%--                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="submit">Go!</button>--%>
+                    <asp:LinkButton runat="server" CssClass="btn btn-default" ID="btnAceptarTextoBiografia" OnClick="btnAceptarTextoBiografia_Click">GO</asp:LinkButton>
                 </span>
             </div>
         </div>
@@ -38,7 +38,7 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Sexo") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" />
+                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
                     <asp:BoundField DataField="Estudia" HeaderText="Estudia" SortExpression="Estudia" />
                     <asp:BoundField DataField="Trabajo" HeaderText="Trabajo" SortExpression="Trabajo" />
                     <asp:BoundField DataField="Vive" HeaderText="Vive" SortExpression="Vive" />

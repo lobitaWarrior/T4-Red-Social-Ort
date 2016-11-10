@@ -22,13 +22,7 @@ public partial class Biografia : System.Web.UI.Page
             LlenarListViewInfoAmigos(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
             LlenarMuroUsuario(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
         }
-        else
-        {
-            //HACER STO EN BOTON MURO
-            //string mensaje = Request.Form["MensajeMuro"];
-            //InsertarMensajeMuro(mensaje);
-            //LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
-        }
+
     }
 
 
@@ -137,6 +131,13 @@ public partial class Biografia : System.Web.UI.Page
         detailsViewInfoUsuario.ChangeMode(DetailsViewMode.ReadOnly);
         detailsViewInfoUsuario.DefaultMode = DetailsViewMode.ReadOnly;
         LlenarListViewInfoUsuario(SessionHelper.UsuarioAutenticado.Id);
+    }
+
+    protected void btnAceptarTextoBiografia_Click(object sender, EventArgs e)
+    {
+        string mensaje = Request.Form["MensajeMuro"];
+        InsertarMensajeMuro(mensaje);
+        LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
     }
 
 }
