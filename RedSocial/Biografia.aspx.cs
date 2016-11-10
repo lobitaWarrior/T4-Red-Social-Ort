@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.UI;
 using RedSocialBusiness;
 using RedSocialEntity;
@@ -140,4 +141,16 @@ public partial class Biografia : System.Web.UI.Page
         LlenarMuroUsuario(SessionHelper.UsuarioAutenticado.Id);//session o url
     }
 
+
+    protected void btnUploadImage_Click(object sender, EventArgs e)
+    {
+        if (FileUpload.HasFile)
+        {
+            string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+            boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id, FileUpload.PostedFile.FileName, bytes);
+        }
+    }
 }
