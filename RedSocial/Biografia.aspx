@@ -3,13 +3,12 @@
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
     <div class="row">
         <div class="col-md-3">
-            <asp:Image runat="server" CssClass="img-responsive img-rounded" />
+            <asp:Image runat="server" CssClass="img-responsive img-rounded img-thumbnail" ImageUrl="~/Imagenes/imagenUsuario.svg" Height="140" Width="140" />
         </div>
         <div class="col-md-7">
             <div class="input-group">
                 <input type="text" class="form-control" id="MensajeMuro" name="MensajeMuro" placeholder="Escribe en la biograf&iacute;a"/>
                 <span class="input-group-btn">
-<%--                    <button class="btn btn-default" id="btnAceptarTextoBiografia" type="submit">Go!</button>--%>
                     <asp:LinkButton runat="server" CssClass="btn btn-default" ID="btnAceptarTextoBiografia" OnClick="btnAceptarTextoBiografia_Click">GO</asp:LinkButton>
                 </span>
             </div>
