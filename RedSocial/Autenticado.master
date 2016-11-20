@@ -15,6 +15,10 @@
             <asp:Table runat="server" ID="tblCabecera" CssClass="Cabecera">
                 <asp:TableRow>
                     <asp:TableCell CssClass="RedSocialORTTitulo"><asp:Label runat="server" ID="lblRedSocialORT" Text="Red Social ORT" CssClass="RedSocialORTTitulo"></asp:Label></asp:TableCell>
+                    <asp:TableCell>
+                        <asp:linkbutton runat="server" ID="btnAmigosPage" CssClass="btn btn-default" OnClick="btnAmigosPage_Click"><i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i></asp:linkbutton>
+                        <asp:linkbutton runat="server" ID="btnBiografiaPage" CssClass="btn btn-default" OnClick="btnBiografiaPage_Click"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></asp:linkbutton>
+                    </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
         </asp:ContentPlaceHolder>
