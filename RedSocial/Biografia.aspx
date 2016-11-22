@@ -3,7 +3,7 @@
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
     <div class="row">
         <div class="col-md-3">
-            <asp:Image runat="server" CssClass="img-responsive img-rounded img-thumbnail" ImageUrl="~/Imagenes/imagenUsuario.svg" Height="140" Width="140" />
+            <asp:Image runat="server" CssClass="img-responsive img-rounded img-thumbnail" ImageUrl="~/Imagenes/imagenUsuario.svg" Height="140" Width="140" ID="imagenUsuario" />
             <asp:FileUpload ID="FileUpload" runat="server" />
             <asp:Button ID="btnUploadImage" runat="server" Text="Upload" OnClick="btnUploadImage_Click" />
         </div>

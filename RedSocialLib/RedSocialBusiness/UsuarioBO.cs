@@ -54,11 +54,11 @@ namespace RedSocialBusiness
             }
         }
 
-        public void ActualizarFoto(int id, string nombreArchivo, byte[] archivoFoto)
+        public void ActualizarFoto(int id,string ruta, string nombreArchivo, byte[] archivoFoto)
         {
             try
             {
-                daUsuario.Actualizar(id, nombreArchivo, archivoFoto);
+                daUsuario.Actualizar(id,ruta, nombreArchivo, archivoFoto);
             }
             catch (ExcepcionDA ex)
             {

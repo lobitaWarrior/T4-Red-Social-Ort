@@ -53,6 +53,7 @@ namespace RedSocialDataSQLServer
             usuario.Trabajo= helpers.SafeGetString(cursor,cursor.GetOrdinal("Trabajo"));
             usuario.Vive= helpers.SafeGetString(cursor,cursor.GetOrdinal("Vive"));
             usuario.EstadoCivil= cursor.GetString(cursor.GetOrdinal("EstadoCivil"));
+            usuario.Foto = helpers.SafeGetString(cursor, cursor.GetOrdinal("UsuarioFoto"));
 
             return usuario;
         }
@@ -106,7 +107,7 @@ namespace RedSocialDataSQLServer
             }
         }
 
-        public void Actualizar(int id, string nombreArchivo, byte[] archivoFoto)
+        public void Actualizar(int id, string ruta,string nombreArchivo, byte[] archivoFoto)
         {
             try
             {
@@ -115,7 +116,8 @@ namespace RedSocialDataSQLServer
                 string rutaFotos = ConfigurationManager.AppSettings["RutaFotos"];
                 string nuevoNombreArchivo = id.ToString() + infoArchivo.Extension;
 
-                using (FileStream archivo = File.Create(rutaFotos + nuevoNombreArchivo))
+
+                using (FileStream archivo = File.Create(ruta + nuevoNombreArchivo))
                 {
                     archivo.Write(archivoFoto, 0, archivoFoto.Length);
                     archivo.Close();

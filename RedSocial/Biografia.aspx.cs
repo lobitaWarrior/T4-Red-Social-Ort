@@ -6,6 +6,7 @@ using RedSocialBusiness;
 using RedSocialEntity;
 using RedSocialWebUtil;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 public partial class Biografia : System.Web.UI.Page
 {
@@ -15,11 +16,11 @@ public partial class Biografia : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
-        {            
+        {
             //cuando entra mi pagina personal y la de otro -> si en la url hay un prametro se lo mando sino session
-            int UsuarioIdNavegado=Convert.ToInt32(Request.QueryString["UserID"]);
+            int UsuarioIdNavegado = Convert.ToInt32(Request.QueryString["UserID"]);
 
-            LlenarListViewInfoUsuario(UsuarioIdNavegado==0?SessionHelper.UsuarioAutenticado.Id:UsuarioIdNavegado);
+            LlenarListViewInfoUsuario(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
             LlenarListViewInfoAmigos(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
             LlenarMuroUsuario(UsuarioIdNavegado == 0 ? SessionHelper.UsuarioAutenticado.Id : UsuarioIdNavegado);
         }
@@ -39,6 +40,20 @@ public partial class Biografia : System.Web.UI.Page
     }
 
     #region /////   LLENAR DATOS    /////
+
+    public void CargarFotoUsuario(string nombreFoto) {
+
+        string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
+        if (nombreFoto!=null)
+        {
+            imagenUsuario.ImageUrl = ruta + nombreFoto;
+        }
+        else
+        {
+            imagenUsuario.ImageUrl = ruta + "imagenUsuario.svg";
+        }
+    }
+
     public void LlenarListViewInfoUsuario(int idUser)
     {
         UsuarioEntity user = new UsuarioEntity();
@@ -51,6 +66,8 @@ public partial class Biografia : System.Web.UI.Page
             dsUsuario.Add(usuario);
             detailsViewInfoUsuario.DataSource = dsUsuario;
             detailsViewInfoUsuario.DataBind();
+
+            CargarFotoUsuario(usuario.Foto);//ademas cargo la foto del user
         }
         catch (Exception ex)
         {
@@ -85,24 +102,25 @@ public partial class Biografia : System.Web.UI.Page
 
     }
 
-    public void devolverDatosUsuario(ref UsuarioEntity usuario) {
+    #endregion
 
-        //TENER CUENTA VALIDACIONES
+    public void devolverDatosUsuario(ref UsuarioEntity usuario)
+    {
+
+        //TODO:TENER CUENTA VALIDACIONES
         //TODO: VER LO DEL COMBO
         usuario.Nombre = ((TextBox)detailsViewInfoUsuario.Rows[0].Cells[1].Controls[0]).Text;
         usuario.Apellido = ((TextBox)detailsViewInfoUsuario.Rows[1].Cells[1].Controls[0]).Text;
-        usuario.Email= ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
+        usuario.Email = ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
         usuario.Sexo = 'F';//Convert.ToChar(((DropDownList)detailsViewInfoUsuario.Rows[3].Cells[1].Controls[0]).SelectedValue);
         usuario.FechaNacimiento = Convert.ToDateTime(((TextBox)detailsViewInfoUsuario.Rows[4].Cells[1].Controls[0]).Text);
         usuario.Estudia = ((TextBox)detailsViewInfoUsuario.Rows[5].Cells[1].Controls[0]).Text;
-        usuario.Trabajo= ((TextBox)detailsViewInfoUsuario.Rows[6].Cells[1].Controls[0]).Text;
-        usuario.Vive= ((TextBox)detailsViewInfoUsuario.Rows[7].Cells[1].Controls[0]).Text;
+        usuario.Trabajo = ((TextBox)detailsViewInfoUsuario.Rows[6].Cells[1].Controls[0]).Text;
+        usuario.Vive = ((TextBox)detailsViewInfoUsuario.Rows[7].Cells[1].Controls[0]).Text;
         usuario.EstadoCivil = ((TextBox)detailsViewInfoUsuario.Rows[8].Cells[1].Controls[0]).Text;
         usuario.Id = SessionHelper.UsuarioAutenticado.Id;
 
     }
-    #endregion
-
 
     protected void btnEditarInformacion_Click(object sender, EventArgs e)
     {
@@ -146,11 +164,9 @@ public partial class Biografia : System.Web.UI.Page
     {
         if (FileUpload.HasFile)
         {
-            string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
-            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-            boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id, FileUpload.PostedFile.FileName, bytes);
+            //TODO:validar que la key no este vacia!
+            string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
+            boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id,ruta, FileUpload.PostedFile.FileName, FileUpload.FileBytes);
         }
     }
 }
