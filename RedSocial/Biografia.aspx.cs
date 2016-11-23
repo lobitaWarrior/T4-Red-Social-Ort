@@ -113,11 +113,10 @@ public partial class Biografia : System.Web.UI.Page
     {
 
         //TODO:TENER CUENTA VALIDACIONES
-        //TODO: VER LO DEL COMBO
         usuario.Nombre = ((TextBox)detailsViewInfoUsuario.Rows[0].Cells[1].Controls[0]).Text;
         usuario.Apellido = ((TextBox)detailsViewInfoUsuario.Rows[1].Cells[1].Controls[0]).Text;
         usuario.Email = ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
-        usuario.Sexo = 'F';//Convert.ToChar(((DropDownList)detailsViewInfoUsuario.Rows[3].Cells[1].Controls[0]).SelectedValue);
+        usuario.Sexo = Convert.ToChar(((DropDownList)detailsViewInfoUsuario.Rows[3].Cells[1].Controls[1]).Text);
         usuario.FechaNacimiento = Convert.ToDateTime(((TextBox)detailsViewInfoUsuario.Rows[4].Cells[1].Controls[0]).Text);
         usuario.Estudia = ((TextBox)detailsViewInfoUsuario.Rows[5].Cells[1].Controls[0]).Text;
         usuario.Trabajo = ((TextBox)detailsViewInfoUsuario.Rows[6].Cells[1].Controls[0]).Text;
@@ -173,5 +172,12 @@ public partial class Biografia : System.Web.UI.Page
             string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
             boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id,ruta, FileUpload.PostedFile.FileName, FileUpload.FileBytes);
         }
+    }
+
+    protected void DropDownList1_DataBound(object sender, EventArgs e)
+    {
+        //((DetailsView)sender).DataItemContainer.DataItem.Sexo
+        //((DetailsView)sender).DataItemContainer;
+        ((DropDownList)sender).Text = "F";
     }
 }

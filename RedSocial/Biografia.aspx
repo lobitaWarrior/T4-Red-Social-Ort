@@ -27,7 +27,7 @@
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                     <asp:TemplateField HeaderText="Sexo" SortExpression="Sexo">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList1" runat="server" Height="23px">
+                            <asp:DropDownList ID="DropDownListSexo" runat="server" Height="23px" OnDataBound="DropDownList1_DataBound">
                                 <asp:ListItem Value="M">Masculino</asp:ListItem>
                                 <asp:ListItem Value="F">Femenino</asp:ListItem>
                             </asp:DropDownList>
@@ -72,7 +72,6 @@
                     <div class="row">
                         <div class="col-md-1">
                             <asp:Image runat="server" Width="25" Height="25" ImageUrl='<%# Eval("RemitenteFoto") %>' />
-                            <%--<asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>--%>
                         </div>
                         <div class="col-md-11">
                             <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Remitente") %>'></asp:Label>
