@@ -44,13 +44,16 @@ public partial class Biografia : System.Web.UI.Page
     public void CargarFotoUsuario(string nombreFoto) {
 
         string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
-        if (nombreFoto!=null)
+        if (ruta!="")
         {
-            imagenUsuario.ImageUrl = ruta + nombreFoto;
-        }
-        else
-        {
-            imagenUsuario.ImageUrl = ruta + "imagenUsuario.svg";
+            if (nombreFoto != null)
+            {
+                imagenUsuario.ImageUrl = ruta + nombreFoto;
+            }
+            else
+            {
+                imagenUsuario.ImageUrl = ruta + "imagenUsuario.svg";
+            }
         }
     }
 
@@ -84,8 +87,11 @@ public partial class Biografia : System.Web.UI.Page
 
             List<AmigosEntity> dsUsuarioAmigos = new List<AmigosEntity>();
             dsUsuarioAmigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
-            //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
-            dsUsuarioAmigos.ForEach(f=>f.UsuarioFoto=ruta+f.UsuarioFoto);
+            if (ruta!="")
+            {
+                //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
+                dsUsuarioAmigos.ForEach(f => f.UsuarioFoto = ruta + f.UsuarioFoto);
+            }
             detailsViewInfoAmigos.DataSource = dsUsuarioAmigos;
             detailsViewInfoAmigos.DataBind();
         }
@@ -100,8 +106,11 @@ public partial class Biografia : System.Web.UI.Page
         string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
         List<MuroEntity> dsMuro = new List<MuroEntity>();
         dsMuro = boMuro.TraerMuroUsuario(idUser);
-        //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
-        dsMuro.ForEach(f => f.RemitenteFoto = ruta + f.RemitenteFoto);
+        if (ruta != "")
+        {
+            //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
+            dsMuro.ForEach(f => f.RemitenteFoto = ruta + f.RemitenteFoto);
+        }
         RptMuro.DataSource = dsMuro;
         RptMuro.DataBind();
 
@@ -112,7 +121,6 @@ public partial class Biografia : System.Web.UI.Page
     public void devolverDatosUsuario(ref UsuarioEntity usuario)
     {
 
-        //TODO:TENER CUENTA VALIDACIONES
         usuario.Nombre = ((TextBox)detailsViewInfoUsuario.Rows[0].Cells[1].Controls[0]).Text;
         usuario.Apellido = ((TextBox)detailsViewInfoUsuario.Rows[1].Cells[1].Controls[0]).Text;
         usuario.Email = ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
@@ -168,16 +176,18 @@ public partial class Biografia : System.Web.UI.Page
     {
         if (FileUpload.HasFile)
         {
-            //TODO:validar que la key no este vacia!
             string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
-            boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id,ruta, FileUpload.PostedFile.FileName, FileUpload.FileBytes);
+            if (ruta!="")
+            {
+                boUsuario.ActualizarFoto(SessionHelper.UsuarioAutenticado.Id, ruta, FileUpload.PostedFile.FileName, FileUpload.FileBytes);
+            }
         }
     }
 
     protected void DropDownList1_DataBound(object sender, EventArgs e)
     {
-        //((DetailsView)sender).DataItemContainer.DataItem.Sexo
-        //((DetailsView)sender).DataItemContainer;
-        ((DropDownList)sender).Text = "F";
+        //agarro el dataitem del contenedor padre
+        object a=((DetailsView)((DropDownList)sender).DataItemContainer).DataItem;
+        ((DropDownList)sender).Text = ((UsuarioEntity)a).Sexo.ToString();
     }
 }
