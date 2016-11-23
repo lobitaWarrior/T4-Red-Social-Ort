@@ -13,7 +13,7 @@ namespace RedSocialEntity
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public char Sexo { get; set; }
-        public string Foto { get; set; }
+        public string UsuarioFoto { get; set; }
         public string Estudia { get; set; }
         public string Trabajo { get; set; }
         public string Vive { get; set; }

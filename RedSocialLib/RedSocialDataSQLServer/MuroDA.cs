@@ -16,6 +16,8 @@ namespace RedSocialDataSQLServer
         {
         }
 
+        Helpers helpers = new Helpers();
+
         #region Metodos Privados
 
         private MuroEntity GetDataMuro(SqlDataReader cursor)
@@ -24,7 +26,7 @@ namespace RedSocialDataSQLServer
             muro.fechaPublicacion = cursor.GetDateTime(cursor.GetOrdinal("Fecha"));
             muro.Remitente = cursor.GetString(cursor.GetOrdinal("Remitente"));
             muro.Mensaje = cursor.GetString(cursor.GetOrdinal("Mensaje"));
-            //muro.RemitenteFoto = cursor.GetString(cursor.GetOrdinal("RemitenteFoto"));
+            muro.RemitenteFoto = helpers.SafeGetString(cursor, cursor.GetOrdinal("RemitenteFoto"));
 
             return muro;
         }

@@ -78,12 +78,14 @@ public partial class Biografia : System.Web.UI.Page
     public void LlenarListViewInfoAmigos(int idUser)
     {
         UsuarioEntity user = new UsuarioEntity();
-
+        string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
         try
         {
 
             List<AmigosEntity> dsUsuarioAmigos = new List<AmigosEntity>();
             dsUsuarioAmigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
+            //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
+            dsUsuarioAmigos.ForEach(f=>f.UsuarioFoto=ruta+f.UsuarioFoto);
             detailsViewInfoAmigos.DataSource = dsUsuarioAmigos;
             detailsViewInfoAmigos.DataBind();
         }
@@ -95,8 +97,11 @@ public partial class Biografia : System.Web.UI.Page
 
     public void LlenarMuroUsuario(int idUser)
     {
+        string ruta = Server.MapPath(ConfigurationManager.AppSettings["RutaFotos"]);
         List<MuroEntity> dsMuro = new List<MuroEntity>();
         dsMuro = boMuro.TraerMuroUsuario(idUser);
+        //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
+        dsMuro.ForEach(f => f.RemitenteFoto = ruta + f.RemitenteFoto);
         RptMuro.DataSource = dsMuro;
         RptMuro.DataBind();
 

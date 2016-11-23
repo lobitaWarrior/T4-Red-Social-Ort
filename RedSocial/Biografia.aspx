@@ -55,8 +55,9 @@
 
             <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False">
                 <Columns>
-<%--                    <asp:ImageField DataImageUrlField="UsuarioFoto">
-                    </asp:ImageField>--%>
+                    <asp:ImageField DataImageUrlField="UsuarioFoto" ReadOnly="true" 
+                        ConvertEmptyStringToNull="true" NullImageUrl="~/Imagenes/imagenUsuario.svg" 
+                        ControlStyle-Width="50" ControlStyle-Height="50"></asp:ImageField>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" ReadOnly="True" SortExpression="Apellido" />
                 </Columns>
@@ -69,11 +70,11 @@
             <asp:Repeater ID="RptMuro" runat="server">
                 <ItemTemplate>
                     <div class="row">
-                        <div class="col-md-3">
-<%--                            <asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>--%>
-
+                        <div class="col-md-1">
+                            <asp:Image runat="server" Width="25" Height="25" ImageUrl='<%# Eval("RemitenteFoto") %>' />
+                            <%--<asp:Label runat="server" ID="lblFoto" Text='<%# Eval("RemitenteFoto") %>'></asp:Label>--%>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-11">
                             <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Remitente") %>'></asp:Label>
                         </div>
                     </div>
