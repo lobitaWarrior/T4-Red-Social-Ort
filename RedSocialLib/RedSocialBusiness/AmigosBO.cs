@@ -11,24 +11,44 @@ namespace RedSocialBusiness
     public class AmigosBO
     {
         private UsuarioDA daUsuario;
+        private AmigosDA daAmigo;
+
         public AmigosBO()
         {
             daUsuario = new UsuarioDA();
+            daAmigo = new AmigosDA();
         }
 
-        public void AgregarAmigo()
+        public void AgregarAmigo(int usuarioid, int amigoid)
         {
+            
             try
             {
+                daAmigo.AgregarAmigo(usuarioid, amigoid);
 
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new ExcepcionBO("Mo de pudo agregar el asmigo", ex);
             }
 
         }
+        public void ModificarSolicituEstado(int estado)
+        {
+
+            try
+            {
+                daAmigo.AceptarSolicitud(estado);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo modificar la solicitud", ex);
+            }
+        }
+
     }
+
 
 }

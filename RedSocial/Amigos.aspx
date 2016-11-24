@@ -3,13 +3,18 @@
 
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
 
-
-    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="false">
+    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="663px" OnRowDataBound="GridView1_RowDataBound">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="UsuarioFoto" ReadOnly="True" SortExpression="UsuarioFoto" />
-            <asp:BoundField DataField="UsuarioNombreApellido" ReadOnly="True" SortExpression="UsuarioNombreApellido" />
-            <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Agregar Amigo" ControlStyle-CssClass="btn btn-primary"/>
+            <asp:BoundField DataField="UsuarioFoto"/>
+            <asp:BoundField DataField="UsuarioNombreApellido" HeaderText="UsuarioNombreApellido" SortExpression="UsuarioNombreApellido" />
+            <asp:TemplateField HeaderText="botones">
+                <ItemTemplate>
+                    <asp:LinkButton runat="server" ID="btnEnviarSolicitud" CssClass="btn btn-default" Visible="false" OnClick="btnEnviarSolicitud_Click"><i class="glyphicon glyphicon-share-alt"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnAceptar" CssClass="btn btn-default" Visible="false" OnClick="btnAceptar_Click"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnCancelar" CssClass="btn btn-default" Visible="false" OnClick="btnCancelar_Click"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -22,5 +27,6 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
+
 
 </asp:Content>

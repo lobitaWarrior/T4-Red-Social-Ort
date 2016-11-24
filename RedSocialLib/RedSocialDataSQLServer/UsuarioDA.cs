@@ -58,6 +58,16 @@ namespace RedSocialDataSQLServer
             return usuario;
         }
 
+        public AmigosEntity GetUsuariosAmigos(SqlDataReader cursor)
+        {
+            AmigosEntity amigos = new AmigosEntity();
+            amigos.UsuarioNombreApellido = cursor.GetString(cursor.GetOrdinal("UsuarioNombreApellido"));
+            amigos.UsuarioFoto= helpers.SafeGetString(cursor, cursor.GetOrdinal("UsuarioFoto"));
+            amigos.EstadoSolicitud = cursor.GetInt32(cursor.GetOrdinal("EstadoSolicitud"));
+            amigos.EsAmigo = cursor.GetInt32(cursor.GetOrdinal("EsAmigo"));
+
+            return amigos;
+        }
         private AmigosEntity GetInfoAmigo(SqlDataReader cursor)
         {
             AmigosEntity usuario = new AmigosEntity();
@@ -270,6 +280,36 @@ namespace RedSocialDataSQLServer
             return amigos;
         }
 
+        public List<AmigosEntity> ListarUsuarios(int idUser)
+        {
+            List<AmigosEntity> usuarios = new List<AmigosEntity>();
+
+            using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+            {
+                using (SqlCommand comando = new SqlCommand("TraerUsuariosYSiEsMiAmigo", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    SqlCommandBuilder.DeriveParameters(comando);
+
+                    comando.Parameters["@IDUsuario"].Value = idUser;
+
+                    using (SqlDataReader cursor = comando.ExecuteReader())
+                    {
+                        while (cursor.Read())
+                        {
+                            usuarios.Add(GetUsuariosAmigos(cursor));
+                        }
+
+                        cursor.Close();
+                    }
+                }
+
+                conexion.Close();
+            }
+
+            return usuarios;
+        }
+
         public void ActualizarInformacionUsuario(UsuarioEntity usuario)
         {
             try
@@ -304,6 +344,7 @@ namespace RedSocialDataSQLServer
             }
 
         }
+
 
         #endregion Métodos Públicos
     }

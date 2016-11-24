@@ -105,5 +105,21 @@ namespace RedSocialBusiness
                 throw new ExcepcionBO("No se pudo actualizar la foto.", ex);
             }
         }
+
+        public List<AmigosEntity> ListarAmigos(int idUser)
+        {
+            List<AmigosEntity> users = new List<AmigosEntity>();
+            try
+            {
+                users = daUsuario.ListarUsuarios(idUser);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo traer los amigos del usuario.", ex);
+            }
+            return users;
+        }
+
+        
     }
 }
