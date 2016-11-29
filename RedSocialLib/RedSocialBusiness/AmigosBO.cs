@@ -35,12 +35,25 @@ namespace RedSocialBusiness
             }
 
         }
-        public void ModificarSolicituEstado(int estado)
+        public void ModificarSolicituEstado(int estado, int usuarioId, int usuarioIdAmigo)
         {
 
             try
             {
-                daAmigo.AceptarSolicitud(estado);
+                daAmigo.AceptarSolicitud(estado,usuarioId,usuarioIdAmigo);
+            }
+            catch (ExcepcionDA ex)
+            {
+                throw new ExcepcionBO("No se pudo modificar la solicitud", ex);
+            }
+        }
+
+        public void CrearSolicituEstado(int usuarioId, int usuarioIdAmigo)
+        {
+
+            try
+            {
+                daAmigo.AceptarSolicitud(estado, usuarioId, usuarioIdAmigo);
             }
             catch (ExcepcionDA ex)
             {

@@ -80,15 +80,17 @@ public partial class Amigos : System.Web.UI.Page
         }
     }
 
-
+    //TODO SE LLAMO 2 VECES EL BOTON AL RENICIAR WEB (fijarse de refreshear web asi se ve la actualizacion de estado (datasource.bind algo asi))
+    //TODO FALTA HACER EL CREAR SOLICITUD (SP NO ES EL MISMO QUE MODIFICAR ESTADO)
     protected void btnAceptar_Click(object sender, EventArgs e)
     {
         //ACTUALIZAR TABLA SOLICITUD PONERLE 0 ESTADO
         //ACTUALIZAR TABLA AMIGOS
-
+        LinkButton btn = (LinkButton)(sender);
+        int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
-        amigo.ModificarSolicituEstado(0);
-        amigo.AgregarAmigo(SessionHelper.UsuarioAutenticado.Id);//FALTA USUARIO AMIGO
+        amigo.ModificarSolicituEstado(0, SessionHelper.UsuarioAutenticado.Id,usuarioIdAmigo);
+        amigo.AgregarAmigo(SessionHelper.UsuarioAutenticado.Id,usuarioIdAmigo);
 
 
     }
@@ -96,14 +98,19 @@ public partial class Amigos : System.Web.UI.Page
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
         //ACTUALIZAR TABLA SOLICITUD PONERLE 0 ESTADO 
+        LinkButton btn = (LinkButton)(sender);
+        int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
-        amigo.ModificarSolicituEstado(0);
+        amigo.ModificarSolicituEstado(0, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
     }
 
     protected void btnEnviarSolicitud_Click(object sender, EventArgs e)
     {
-        //ACTUALIZAR TABLA SOLICITUD PONERLE 1 ESTADO
+        //CREAR SOLICITUD LLAMAR AL SP PARA QUE LO HAGA
+        LinkButton btn = (LinkButton)(sender);
+        int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
-        amigo.ModificarSolicituEstado(0);
+        //amigo.ModificarSolicituEstado(1, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
+
     }
 }

@@ -10,9 +10,9 @@
             <asp:BoundField DataField="UsuarioNombreApellido" HeaderText="UsuarioNombreApellido" SortExpression="UsuarioNombreApellido" />
             <asp:TemplateField HeaderText="botones">
                 <ItemTemplate>
-                    <asp:LinkButton runat="server" ID="btnEnviarSolicitud" CssClass="btn btn-default" Visible="false" OnClick="btnEnviarSolicitud_Click"><i class="glyphicon glyphicon-share-alt"></i></asp:LinkButton>
-                    <asp:LinkButton runat="server" ID="btnAceptar" CssClass="btn btn-default" Visible="false" OnClick="btnAceptar_Click"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
-                    <asp:LinkButton runat="server" ID="btnCancelar" CssClass="btn btn-default" Visible="false" OnClick="btnCancelar_Click"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnEnviarSolicitud" CommandArgument='<%#Eval("UsuarioID") %>' CssClass="btn btn-default" Visible="false" OnClick="btnEnviarSolicitud_Click"><i class="glyphicon glyphicon-share-alt"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnAceptar" CommandArgument='<%#Eval("UsuarioID") %>' CssClass="btn btn-default" Visible="false" OnClick="btnAceptar_Click"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnCancelar" CommandArgument='<%#Eval("UsuarioID") %>'  CssClass="btn btn-default" Visible="false" OnClick="btnCancelar_Click"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

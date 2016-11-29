@@ -23,8 +23,8 @@ namespace RedSocialDataSQLServer
                         comando.CommandType = CommandType.StoredProcedure;
                         SqlCommandBuilder.DeriveParameters(comando);
 
-                        comando.Parameters["@UsuarioID"].Value = usuarioid;
-                        comando.Parameters["@UsuarioIDAmigo"].Value = usuarioidamigo;
+                        comando.Parameters["@IDUsuario"].Value = usuarioid;
+                        comando.Parameters["@IDUsuarioAmigo"].Value = usuarioidamigo;
 
                         comando.ExecuteNonQuery();
                       
@@ -40,7 +40,7 @@ namespace RedSocialDataSQLServer
 
         }
 
-            public void AceptarSolicitud(int estado)
+            public void AceptarSolicitud(int estado, int usuarioId, int usuarioidamigo)
         {
             try
             {
@@ -48,10 +48,43 @@ namespace RedSocialDataSQLServer
                 {
                     using (SqlCommand comando = new SqlCommand("SolicitudModificarEstado", conexion))
                     {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        SqlCommandBuilder.DeriveParameters(comando);
 
+                        comando.Parameters["@IDUsuario"].Value = usuarioId;
+                        comando.Parameters["@IDUsuarioSolicita"].Value = usuarioidamigo;
+                        comando.Parameters["@IDSolicitudEstado"].Value = estado;
 
-                        conexion.Close();
+                        comando.ExecuteNonQuery();
+
                     }
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ExcepcionDA("No se pudo realizar la solicitud", ex);
+            }
+        }
+
+        public void CrearSolicitud(int usuarioId, int usuarioidamigo)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+                    using (SqlCommand comando = new SqlCommand("CrearSolicitudAmistad", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        SqlCommandBuilder.DeriveParameters(comando);
+
+                        comando.Parameters["@IDUsuario"].Value = usuarioId;
+                        comando.Parameters["@IDUsuarioSolicita"].Value = usuarioidamigo;
+
+                        comando.ExecuteNonQuery();
+
+                    }
+                    conexion.Close();
                 }
             }
             catch (Exception ex)

@@ -62,9 +62,10 @@ namespace RedSocialDataSQLServer
         {
             AmigosEntity amigos = new AmigosEntity();
             amigos.UsuarioNombreApellido = cursor.GetString(cursor.GetOrdinal("UsuarioNombreApellido"));
-            amigos.UsuarioFoto= helpers.SafeGetString(cursor, cursor.GetOrdinal("UsuarioFoto"));
+            amigos.UsuarioFoto = helpers.SafeGetString(cursor, cursor.GetOrdinal("UsuarioFoto"));
             amigos.EstadoSolicitud = cursor.GetInt32(cursor.GetOrdinal("EstadoSolicitud"));
             amigos.EsAmigo = cursor.GetInt32(cursor.GetOrdinal("EsAmigo"));
+            amigos.UsuarioId = cursor.GetInt32(cursor.GetOrdinal("UsuarioID"));
 
             return amigos;
         }
