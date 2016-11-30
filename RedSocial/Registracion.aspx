@@ -85,8 +85,8 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="2">
-                        <asp:RadioButton ID="radMujer" runat="server" Text="Mujer" CssClass="SexoFemenino" />
-                        <asp:RadioButton ID="radHombre" runat="server" Text="Hombre" />
+                        <asp:RadioButton ID="radMujer" runat="server" Text="Mujer" CssClass="SexoFemenino" GroupName="sexo"/>
+                        <asp:RadioButton ID="radHombre" runat="server" Text="Hombre" GroupName="sexo"/>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>

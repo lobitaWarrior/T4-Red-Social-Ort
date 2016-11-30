@@ -53,7 +53,7 @@ namespace RedSocialBusiness
 
             try
             {
-                daAmigo.AceptarSolicitud(estado, usuarioId, usuarioIdAmigo);
+                daAmigo.CrearSolicitud(usuarioId, usuarioIdAmigo);
             }
             catch (ExcepcionDA ex)
             {
