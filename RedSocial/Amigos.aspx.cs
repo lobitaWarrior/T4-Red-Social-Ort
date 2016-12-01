@@ -72,13 +72,6 @@ public partial class Amigos : System.Web.UI.Page
                     btnAceptar.Visible = true;
                     btnEnviar.Visible = false;
                 }
-                else if(((AmigosEntity)e.Row.DataItem).EstadoSolicitud == 2)
-                {
-                    btnCancelar.Visible = false;
-                    btnAceptar.Visible = false;
-                    btnEnviar.Visible = false;
-                    labelSolicitudEnviada.Visible = true;
-                }
                 else
                 {
                     btnCancelar.Visible = false;
@@ -89,7 +82,6 @@ public partial class Amigos : System.Web.UI.Page
         }
     }
 
-    //TODO SE LLAMO 2 VECES EL BOTON AL RENICIAR WEB (fijarse de refreshear web asi se ve la actualizacion de estado (datasource.bind algo asi))
     protected void btnAceptar_Click(object sender, EventArgs e)
     {
         //ACTUALIZAR TABLA SOLICITUD PONERLE 0 ESTADO
@@ -119,7 +111,7 @@ public partial class Amigos : System.Web.UI.Page
         int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
         amigo.CrearSolicituEstado(SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
-        amigo.ModificarSolicituEstado(2, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
+        //amigo.ModificarSolicituEstado(2, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
 
     }
 }
