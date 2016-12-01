@@ -6,7 +6,7 @@
     <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="663px" OnRowDataBound="GridView1_RowDataBound">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="UsuarioFoto"/>
+            <asp:ImageField DataImageUrlField="UsuarioFoto" DataImageUrlFormatString="Imagenes/{0}" ControlStyle-Width="50"></asp:ImageField>
             <asp:BoundField DataField="UsuarioNombreApellido" HeaderText="UsuarioNombreApellido" SortExpression="UsuarioNombreApellido" />
             <asp:TemplateField>
                 <ItemTemplate>
