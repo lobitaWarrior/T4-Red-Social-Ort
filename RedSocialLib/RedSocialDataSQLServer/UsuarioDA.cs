@@ -49,10 +49,10 @@ namespace RedSocialDataSQLServer
             usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
             usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
             usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
-            usuario.Estudia = helpers.SafeGetString(cursor,cursor.GetOrdinal("Estudia"));
-            usuario.Trabajo= helpers.SafeGetString(cursor,cursor.GetOrdinal("Trabajo"));
-            usuario.Vive= helpers.SafeGetString(cursor,cursor.GetOrdinal("Vive"));
-            usuario.EstadoCivil= cursor.GetString(cursor.GetOrdinal("EstadoCivil"));
+            usuario.Estudia = helpers.SafeGetString(cursor, cursor.GetOrdinal("Estudia"));
+            usuario.Trabajo = helpers.SafeGetString(cursor, cursor.GetOrdinal("Trabajo"));
+            usuario.Vive = helpers.SafeGetString(cursor, cursor.GetOrdinal("Vive"));
+            usuario.EstadoCivil = helpers.SafeGetString(cursor, cursor.GetOrdinal("EstadoCivil"));
             usuario.Foto = helpers.SafeGetString(cursor, cursor.GetOrdinal("UsuarioFoto"));
 
             return usuario;

@@ -21,4 +21,10 @@ public partial class Autenticado : System.Web.UI.MasterPage
         Server.Transfer("Biografia.aspx");
     }
 
+
+    protected void btnLogOff_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("Registracion.aspx");
+        Session.Clear();
+    }
 }
