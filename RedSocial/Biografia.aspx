@@ -2,25 +2,42 @@
 
 <asp:Content ID="cphCuerpo" ContentPlaceHolderID="Cuerpo" runat="Server">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" style="padding-top: 5px;">
             <asp:Image runat="server" CssClass="img-responsive img-rounded img-thumbnail" ImageUrl="~/Imagenes/imagenUsuario.svg" Height="140" Width="140" ID="imagenUsuario" />
             <asp:FileUpload ID="FileUpload" runat="server" />
             <asp:Button ID="btnUploadImage" runat="server" Text="Upload" OnClick="btnUploadImage_Click" />
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7" style="padding-top: 15px;">
             <div class="input-group">
-                <input type="text" class="form-control" id="MensajeMuro" name="MensajeMuro" placeholder="Escribe en la biograf&iacute;a"/>
+                <input type="text" class="form-control" id="MensajeMuro" name="MensajeMuro" placeholder="Escribe en la biograf&iacute;a" />
                 <span class="input-group-btn">
                     <asp:LinkButton runat="server" CssClass="btn btn-default" ID="btnAceptarTextoBiografia" OnClick="btnAceptarTextoBiografia_Click">GO</asp:LinkButton>
                 </span>
             </div>
         </div>
- 
+
+        <div class="col-md-2" style="padding-top:15px;">
+            <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:ImageField DataImageUrlField="UsuarioFoto" DataImageUrlFormatString="Imagenes/{0}" ReadOnly="true"
+                        ConvertEmptyStringToNull="true" NullImageUrl="~/Imagenes/imagenUsuario.svg"
+                        ControlStyle-Width="50" ControlStyle-Height="50">
+                    </asp:ImageField>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre " ReadOnly="True" SortExpression="Nombre" />
+                    <asp:BoundField DataField="Apellido" HeaderText=" ,Apellido" ReadOnly="True" SortExpression="Apellido" />
+                </Columns>
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <RowStyle BackColor="#EFF3FB" />
+            </asp:GridView>
+
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" style="padding-top:15px;">
 
-            <asp:DetailsView ID="detailsViewInfoUsuario" runat="server" AutoGenerateRows="False" Height="16px" Width="33px">
+            <asp:DetailsView ID="detailsViewInfoUsuario" runat="server" ForeColor="#333333" GridLines="None" AutoGenerateRows="False" Height="16px" Width="33px">
+                <AlternatingRowStyle BackColor="White" />
                 <Fields>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
@@ -46,39 +63,31 @@
                     <asp:BoundField DataField="EstadoCivil" HeaderText="Estado Civil" SortExpression="EstadoCivil" />
                 </Fields>
                 <HeaderTemplate>
-                    <asp:LinkButton runat="server" ID="btnEditarInformacion"  CssClass="pull-right" OnClick="btnEditarInformacion_Click" ><i class="glyphicon glyphicon-pencil"></i></asp:LinkButton>
-                    <asp:LinkButton runat="server" ID="btnGuardarInformacion"  CssClass="pull-right " OnClick="btnGuardarInformacion_Click" Visible="false"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
-                    <asp:LinkButton runat="server" ID="btnCancelarGuardado" CssClass="pull-right  " OnClick="btnCancelarGuardado_Click" Visible="false"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
+                    <asp:Label runat="server" Text="Informacion"></asp:Label>
+                    <asp:LinkButton runat="server" ID="btnEditarInformacion" CssClass="pull-right" ForeColor="White" OnClick="btnEditarInformacion_Click"><i class="glyphicon glyphicon-pencil"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnGuardarInformacion" CssClass="pull-right " ForeColor="White" OnClick="btnGuardarInformacion_Click" Visible="false"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnCancelarGuardado" CssClass="pull-right  " ForeColor="White" OnClick="btnCancelarGuardado_Click" Visible="false"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
                 </HeaderTemplate>
+
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <RowStyle BackColor="#EFF3FB" />
             </asp:DetailsView>
-
-
-            <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False">
-                <Columns>
-                    <asp:ImageField DataImageUrlField="UsuarioFoto" DataImageUrlFormatString="Imagenes/{0}" ReadOnly="true" 
-                        ConvertEmptyStringToNull="true" NullImageUrl="~/Imagenes/imagenUsuario.svg" 
-                        ControlStyle-Width="50" ControlStyle-Height="50"></asp:ImageField>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
-                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" ReadOnly="True" SortExpression="Apellido" />
-                </Columns>
-
-            </asp:GridView>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-7" style="margin-top: -100px;">
 
             <asp:Repeater ID="RptMuro" runat="server">
                 <ItemTemplate>
-                    <div class="row">
+                    <div class="row" style="padding: 10px;">
                         <div class="col-md-1">
                             <asp:Image runat="server" Width="25" Height="25" ImageUrl='<%# Eval("RemitenteFoto") %>' />
                         </div>
                         <div class="col-md-11">
-                            <asp:Label runat="server" ID="lblUsuario" Text='<%# Eval("Remitente") %>'></asp:Label>
+                            <asp:Label runat="server" ID="lblUsuario" Font-Bold="true" Text='<%# Eval("Remitente") %>'></asp:Label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="margin-left: 95px; padding-right: 0px;">
                             <asp:Label runat="server" ID="lblMensaje" Text='<%# Eval("Mensaje") %>'></asp:Label>
                         </div>
                     </div>
