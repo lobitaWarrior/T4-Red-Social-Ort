@@ -19,13 +19,13 @@ public partial class Autenticado : System.Web.UI.MasterPage
 
     protected void btnBiografiaPage_Click(object sender, EventArgs e)
     {
-        Server.Transfer("Biografia.aspx");
+        Response.Redirect("Biografia.aspx");
     }
 
 
     protected void btnLogOff_Click(object sender, EventArgs e)
     {
-        Server.Transfer("Registracion.aspx");
+        Response.Redirect("Registracion.aspx");
         Session.Clear();
     }
 }
