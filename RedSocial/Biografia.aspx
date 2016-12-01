@@ -55,7 +55,7 @@
 
             <asp:GridView ID="detailsViewInfoAmigos" runat="server" AutoGenerateColumns="False">
                 <Columns>
-                    <asp:ImageField DataImageUrlField="UsuarioFoto" ReadOnly="true" 
+                    <asp:ImageField DataImageUrlField="UsuarioFoto" DataImageUrlFormatString="Imagenes/{0}" ReadOnly="true" 
                         ConvertEmptyStringToNull="true" NullImageUrl="~/Imagenes/imagenUsuario.svg" 
                         ControlStyle-Width="50" ControlStyle-Height="50"></asp:ImageField>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />

@@ -87,11 +87,11 @@ public partial class Biografia : System.Web.UI.Page
 
             List<AmigosEntity> dsUsuarioAmigos = new List<AmigosEntity>();
             dsUsuarioAmigos = boUsuario.TraerInformacionAmigosUsuario(idUser);
-            if (ruta!="")
-            {
-                //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
-                dsUsuarioAmigos.ForEach(f => f.UsuarioFoto = ruta + f.UsuarioFoto);
-            }
+            //if (ruta!="")
+            //{
+            //    //como solo traigo el nombre de la foto en la base de datos, aca le asigno la ruta para poder buscarla en la carpeta
+            //    dsUsuarioAmigos.ForEach(f => f.UsuarioFoto = ruta + f.UsuarioFoto);
+            //}
             detailsViewInfoAmigos.DataSource = dsUsuarioAmigos;
             detailsViewInfoAmigos.DataBind();
         }
