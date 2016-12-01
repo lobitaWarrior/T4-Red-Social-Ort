@@ -12,7 +12,8 @@ public partial class Autenticado : System.Web.UI.MasterPage
 
     protected void btnAmigosPage_Click(object sender, EventArgs e)
     {
-        Server.Transfer("Amigos.aspx");
+        //Server.Transfer("Amigos.aspx");
+        Response.Redirect("Amigos.aspx");
 
     }
 

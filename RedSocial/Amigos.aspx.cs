@@ -91,7 +91,7 @@ public partial class Amigos : System.Web.UI.Page
         AmigosBO amigo = new AmigosBO();
         amigo.ModificarSolicituEstado(0, SessionHelper.UsuarioAutenticado.Id,usuarioIdAmigo);
         amigo.AgregarAmigo(SessionHelper.UsuarioAutenticado.Id,usuarioIdAmigo);
-
+        LlenarGridAmigos(SessionHelper.UsuarioAutenticado.Id);
 
     }
 
@@ -102,6 +102,7 @@ public partial class Amigos : System.Web.UI.Page
         int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
         amigo.ModificarSolicituEstado(0, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
+        LlenarGridAmigos(SessionHelper.UsuarioAutenticado.Id);
     }
 
     protected void btnEnviarSolicitud_Click(object sender, EventArgs e)
@@ -111,6 +112,7 @@ public partial class Amigos : System.Web.UI.Page
         int usuarioIdAmigo = Convert.ToInt32(btn.CommandArgument);
         AmigosBO amigo = new AmigosBO();
         amigo.CrearSolicituEstado(SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
+        LlenarGridAmigos(SessionHelper.UsuarioAutenticado.Id);
         //amigo.ModificarSolicituEstado(2, SessionHelper.UsuarioAutenticado.Id, usuarioIdAmigo);
 
     }
