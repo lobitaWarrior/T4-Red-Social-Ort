@@ -39,9 +39,9 @@
             <asp:DetailsView ID="detailsViewInfoUsuario" runat="server" ForeColor="#333333" GridLines="None" AutoGenerateRows="False" Height="16px" Width="33px">
                 <AlternatingRowStyle BackColor="White" />
                 <Fields>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
-                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" ReadOnly="True"></asp:BoundField>
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" ReadOnly="true"/>
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" ReadOnly="true"/>
                     <asp:TemplateField HeaderText="Sexo" SortExpression="Sexo">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DropDownListSexo" runat="server" Height="23px" OnDataBound="DropDownList1_DataBound">
@@ -56,7 +56,7 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Sexo") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
+                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" ReadOnly="true"/>
                     <asp:BoundField DataField="Estudia" HeaderText="Estudia" SortExpression="Estudia" />
                     <asp:BoundField DataField="Trabajo" HeaderText="Trabajo" SortExpression="Trabajo" />
                     <asp:BoundField DataField="Vive" HeaderText="Vive" SortExpression="Vive" />

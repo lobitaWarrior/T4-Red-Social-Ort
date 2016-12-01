@@ -121,11 +121,11 @@ public partial class Biografia : System.Web.UI.Page
     public void devolverDatosUsuario(ref UsuarioEntity usuario)
     {
 
-        usuario.Nombre = ((TextBox)detailsViewInfoUsuario.Rows[0].Cells[1].Controls[0]).Text;
-        usuario.Apellido = ((TextBox)detailsViewInfoUsuario.Rows[1].Cells[1].Controls[0]).Text;
-        usuario.Email = ((TextBox)detailsViewInfoUsuario.Rows[2].Cells[1].Controls[0]).Text;
+        usuario.Nombre = detailsViewInfoUsuario.Rows[0].Cells[1].Text;
+        usuario.Apellido = detailsViewInfoUsuario.Rows[1].Cells[1].Text;
+        usuario.Email = detailsViewInfoUsuario.Rows[2].Cells[1].Text;
         usuario.Sexo = Convert.ToChar(((DropDownList)detailsViewInfoUsuario.Rows[3].Cells[1].Controls[1]).Text);
-        usuario.FechaNacimiento = Convert.ToDateTime(((TextBox)detailsViewInfoUsuario.Rows[4].Cells[1].Controls[0]).Text);
+        usuario.FechaNacimiento = Convert.ToDateTime(detailsViewInfoUsuario.Rows[4].Cells[1].Text);
         usuario.Estudia = ((TextBox)detailsViewInfoUsuario.Rows[5].Cells[1].Controls[0]).Text;
         usuario.Trabajo = ((TextBox)detailsViewInfoUsuario.Rows[6].Cells[1].Controls[0]).Text;
         usuario.Vive = ((TextBox)detailsViewInfoUsuario.Rows[7].Cells[1].Controls[0]).Text;
