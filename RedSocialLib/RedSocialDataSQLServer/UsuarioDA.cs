@@ -72,15 +72,8 @@ namespace RedSocialDataSQLServer
         private AmigosEntity GetInfoAmigo(SqlDataReader cursor)
         {
             AmigosEntity usuario = new AmigosEntity();
-            usuario.Id = cursor.GetInt32(cursor.GetOrdinal("UsuarioIDAmigo"));
-            usuario.Nombre = cursor.GetString(cursor.GetOrdinal("UsuarioNombre"));
-            usuario.Apellido = cursor.GetString(cursor.GetOrdinal("UsuarioApellido"));
-            usuario.Email = cursor.GetString(cursor.GetOrdinal("UsuarioEmail"));
-            usuario.FechaNacimiento = cursor.GetDateTime(cursor.GetOrdinal("UsuarioFechaNacimiento"));
-            usuario.Sexo = cursor.GetString(cursor.GetOrdinal("UsuarioSexo"))[0];
-            usuario.Trabajo = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioTrabajo"));
-            usuario.Vive = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioProvincia"));
-            usuario.UsuarioFoto = helpers.SafeGetString(cursor,cursor.GetOrdinal("UsuarioFoto"));
+            usuario.UsuarioNombreApellido = cursor.GetString(cursor.GetOrdinal("AmigoNombre"));
+            usuario.UsuarioFoto = helpers.SafeGetString(cursor,cursor.GetOrdinal("AmigoFoto"));
             return usuario;
         }
 

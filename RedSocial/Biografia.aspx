@@ -24,8 +24,8 @@
                         ConvertEmptyStringToNull="true" NullImageUrl="~/Imagenes/imagenUsuario.svg"
                         ControlStyle-Width="50" ControlStyle-Height="50">
                     </asp:ImageField>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre " ReadOnly="True" SortExpression="Nombre" />
-                    <asp:BoundField DataField="Apellido" HeaderText=" ,Apellido" ReadOnly="True" SortExpression="Apellido" />
+                    <asp:BoundField DataField="UsuarioNombreApellido" HeaderText="Nombre, Apellido " ReadOnly="True" SortExpression="UsuarioNombreApellido" />
+<%--                    <asp:BoundField DataField="Apellido" HeaderText=" ,Apellido" ReadOnly="True" SortExpression="Apellido" />--%>
                 </Columns>
                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                 <RowStyle BackColor="#EFF3FB" />
